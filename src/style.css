@@ -853,3 +853,78 @@ button {
     max-width: min(1050px, 90vw, 145vh);
   }
 }
+
+/* =====================================
+   SCREEN SIZING — SEPARATE CONTROLS
+   ===================================== */
+
+/* BEDROOM — larger artwork */
+.bedroom-screen {
+  width: 100%;
+  min-height: 100dvh;
+  height: auto;
+  padding: 24px 20px 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bedroom-layout {
+  width: min(1150px, 94vw);
+  max-width: none;
+  margin: 0 auto;
+}
+
+.bedroom-artwork {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.bedroom-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* LOADING SCREEN — independent sizing */
+.loading-screen {
+  width: 100%;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.loading-screen .arcade-panel {
+  width: min(850px, 94vw);
+  max-width: none;
+  margin: 0 auto;
+  transform: none;
+  zoom: 1;
+}
+
+/* Smaller devices */
+@media (max-width: 700px) {
+  .bedroom-screen {
+    padding: 16px 10px;
+  }
+
+  .bedroom-layout {
+    width: 100%;
+  }
+
+  .loading-screen {
+    padding: 12px;
+  }
+
+  .loading-screen .arcade-panel {
+    width: 100%;
+  }
+}
