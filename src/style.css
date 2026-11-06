@@ -1,515 +1,523 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+User attachment
+FOUND THE ERROR!! 😭💙 And thankfully, it's fixable!
 
-* {
-  box-sizing: border-box;
+Your Vercel logs show that the problem is in src/main.jsx, not style.css.
+
+The important error is:
+
+Unexpected closing "main" tag does not match opening "section" tag
+
+Expected "}" but found ";"
+This means the JSX tags aren't properly matched. Most likely, something went wrong when we replaced the loading-screen section earlier.
+
+What we need to fix
+Near lines 150–160, your code contains something like:
+
+</section>
+)}
+</main>
+);
 }
 
-html, body, #root {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-}
+The problem is probably earlier in the file: a missing </div>, </section>, or )} is causing React to interpret the closing tags incorrectly.
 
-body {
-  background: #10182e;
-  color: #f0f0ff;
-  font-family: 'Press Start 2P', monospace;
-}
+Don't randomly add or delete closing tags, because that could create more errors.
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
+Next step — Show me your main.jsx
+Open your main.jsx on GitHub.
 
+Click the pencil icon to edit.
 
-.app {
-  width: 100%;
-  min-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+Copy the entire code.
 
+Paste it here.
 
+I'll correct the JSX structure and return one complete, ready-to-paste main.jsx file.
 
+We'll preserve your opening screen, 12-second retro loading animation, checklist, and ENTER ROOM button.
 
+Once this is fixed, Vercel should be able to build the updated website, and your loading-screen size changes can finally appear! 💜
 
-/* OPENING SCREEN */
+import React, { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import "./style.css";
 
-.opening-screen {
-  position: relative;
-  width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  background-image: url('/opening-screen.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+function App() {
+  const [screen, setScreen] = useState("start");
+  const [progress, setProgress] = useState(0);
 
-/* Keep the PRESS START button clickable */
+  useEffect(() => {
+    if (screen !== "loading") return;
+
+    setProgress(0);
+
+    const interval = setInterval(() => {
+      setProgress((current) => {
+        if (current >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+
+        return Math.min(current + 5, 100);
+      });
+    }, 600);
+
+    return () => clearInterval(interval);
+  }, [screen]);
 
 
-.computer-hotspot {
-  position: absolute;
-  z-index: 2;
+  return (
+    <main className="app">
+      {screen === "start" && (
+        <section className="opening-screen">
+          <div className="computer-hotspot">
+            <button
+              className="start-button"
+              onClick={() => setScreen("loading")}
+              aria-label="Press start"
+            >
+              PRESS START
+            </button>
+          </div>
+        </section>
+      )}
 
-  /* Position over the illustrated PRESS START button */
-  left: 50%;
-  top: 58%;
+     
 
-  width: 15%;
-  height: 6%;
+{screen === "loading" && (
+  <section className="loading-screen">
+    <div className="boot-city" aria-hidden="true">
+      <span className="city-stars">✦ · ✧ · ✦ · ✧</span>
+      <div className="city-skyline" />
+    </div>
 
-  transform: translate(-50%, -50%);
-}
+    <div className="arcade-panel">
+      <header className="arcade-header">
+        <span>🎮 BIRTHDAY.EXE</span>
+        <span>
+          {progress >= 100 ? "READY!" : "BOOTING..."}
+        </span>
+      </header>
+
+      <div className="arcade-body">
+        <div className="arcade-controller" aria-hidden="true">
+          <span>✦</span>
+          <span className="controller-symbol">🎮</span>
+          <span>✦</span>
+        </div>
+
+        <h1 className="arcade-title">HELLO, LOVE!</h1>
+
+        <div className="arcade-message">
+          <span className="message-sparkle">✦</span>
+          <p>
+            Handa ka na bang ma-amaze sa gawa ng
+            asawa mong malupet?
+          </p>
+          <span className="message-sparkle">✦</span>
+        </div>
+
+        <div className="arcade-progress">
+          <div className="arcade-progress-track">
+            <div
+              className="arcade-progress-fill"
+              style={{ width: ${progress}% }}
+            />
+          </div>
+
+          <div className="arcade-progress-labels">
+            <span>
+              {progress >= 100
+                ? "ALL SYSTEMS READY!"
+                : "LOADING SURPRISES..."}
+            </span>
+            <span>{progress}%</span>
+          </div>
+        </div>
+
+        <div className="arcade-checklist">
+          {[
+            "Initializing birthday magic...",
+            "Collecting all the cuteness...",
+            "Preparing your special world...",
+            "Finalizing..."
+          ].map((message, index) => {
+            const thresholds = [25, 50, 75, 100];
+            const done = progress >= thresholds[index];
+            const active =
+              !done &&
+              (index === 0 ||
+                progress >= thresholds[index - 1]);
+
+            return (
+              <div
+                className={
+                  "arcade-check-item" +
+                  (done ? " done" : "") +
+                  (active ? " active" : "")
+                }
+                key={message}
+              >
+                <span className="arcade-check-arrow">
+                  {active ? "▶" : ""}
+                </span>
+                <span className="arcade-check-box">
+                  {done ? "✓" : ""}
+                </span>
+                <span>{message}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        
+{progress >= 100 && (
+  <button
+    className="arcade-enter-button"
+    onClick={() => setScreen("room")}
+  >
+    ▶ ENTER ROOM
+  </button>
+)}
 
 
+      <footer className="arcade-footer">
+        ♡ A PRESSURE-FREE BIRTHDAY EXPERIENCE ♡
+      </footer>
+    </div>
+  </section>
+)}
 
-.start-button {
-  display: block;
-  width: 100%;
-  height: 100%;
-
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-
-  /* Hide duplicate text */
-  color: transparent;
-  font-size: 0;
-  line-height: 0;
-
-  cursor: pointer;
-}
-
-.start-button:focus-visible {
-  outline: 2px solid #d1c4ff;
-  outline-offset: 3px;
-}
-
-
-@keyframes start-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.65; }
-}
-
-
-
-/* =========================================
-   BIRTHDAY.EXE - RETRO ARCADE LOADING
-   ========================================= */
-
-.loading-screen {
-  position: relative;
-  width: 100%;
-  min-height: 100dvh;
-  padding: 28px 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    #0c1331 0%,
-    #1c2255 52%,
-    #5d3b9b 82%,
-    #171737 100%
+      {screen === "room" && (
+        <section className="bedroom-screen">
+          <h1>WELCOME TO BIRTHDAY.EXE</h1>
+          <p>Your birthday world is ready.</p>
+          <p>The interactive bedroom is coming next!</p>
+        </section>
+      )}
+    </main>
   );
 }
 
-/* Night sky */
+createRoot(document.getElementById("root")).render(
+  <App />
+);
+…
+FOUND IT!! 💙🎮 Your code is actually very close to working! The deployment failed because one closing </div> is missing.
 
-.boot-city {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
+Specifically, the .arcade-body container isn't closed before the <footer>. This causes React to encounter </section> while it's still expecting another closing tag.
 
-.city-stars {
-  position: absolute;
-  top: 5%;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: #b8a0ff;
-  font-size: 25px;
-  letter-spacing: 65px;
-  animation: arcade-twinkle 2.5s infinite alternate;
-}
+I've corrected the structure below while preserving everything you've already built.
 
-.city-skyline {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 24%;
-  background:
-    linear-gradient(
-      transparent 0%,
-      rgba(10, 14, 43, 0.85) 100%
-    );
-  clip-path: polygon(
-    0 55%, 4% 55%, 4% 32%,
-    9% 32%, 9% 70%, 14% 70%,
-    14% 15%, 19% 15%, 19% 48%,
-    25% 48%, 25% 65%, 31% 65%,
-    31% 24%, 36% 24%, 36% 70%,
-    43% 70%, 43% 40%, 49% 40%,
-    49% 62%, 55% 62%, 55% 18%,
-    60% 18%, 60% 58%, 67% 58%,
-    67% 35%, 73% 35%, 73% 72%,
-    79% 72%, 79% 20%, 84% 20%,
-    84% 52%, 91% 52%, 91% 29%,
-    96% 29%, 96% 65%, 100% 65%,
-    100% 100%, 0 100%
+Step 1 — Replace your entire src/main.jsx
+Go to your main.jsx on GitHub, click the pencil icon, select everything using Ctrl + A, and paste this complete corrected code.
+
+
+import React, { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import "./style.css";
+
+function App() {
+  const [screen, setScreen] = useState("start");
+  const [progress, setProgress] = useState(0);
+
+  // 12-second loading animation
+  useEffect(() => {
+    if (screen !== "loading") return;
+
+    setProgress(0);
+
+    const interval = setInterval(() => {
+      setProgress((current) => {
+        if (current >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+
+        return Math.min(current + 5, 100);
+      });
+    }, 600);
+
+    return () => clearInterval(interval);
+  }, [screen]);
+
+  const loadingMessages = [
+    "Initializing birthday magic...",
+    "Collecting all the cuteness...",
+    "Preparing your special world...",
+    "Finalizing..."
+  ];
+
+  const thresholds = [25, 50, 75, 100];
+
+  return (
+    <main className="app">
+
+      {/* OPENING SCREEN */}
+      {screen === "start" && (
+        <section className="opening-screen">
+          <div className="computer-hotspot">
+            <button
+              className="start-button"
+              onClick={() => setScreen("loading")}
+              aria-label="Press start"
+            >
+              PRESS START
+            </button>
+          </div>
+        </section>
+      )}
+
+      {/* RETRO ARCADE LOADING SCREEN */}
+      {screen === "loading" && (
+        <section className="loading-screen">
+
+          <div className="boot-city" aria-hidden="true">
+            <span className="city-stars">
+              ✦ · ✧ · ✦ · ✧
+            </span>
+            <div className="city-skyline" />
+          </div>
+
+          <div className="arcade-panel">
+
+            {/* HEADER */}
+            <header className="arcade-header">
+              <span>🎮 BIRTHDAY.EXE</span>
+              <span>
+                {progress >= 100 ? "READY!" : "BOOTING..."}
+              </span>
+            </header>
+
+            {/* MAIN CONTENT */}
+            <div className="arcade-body">
+
+              <div
+                className="arcade-controller"
+                aria-hidden="true"
+              >
+                <span>✦</span>
+                <span className="controller-symbol">
+                  🎮
+                </span>
+                <span>✦</span>
+              </div>
+
+              <h1 className="arcade-title">
+                HELLO, LOVE!
+              </h1>
+
+              <div className="arcade-message">
+                <span className="message-sparkle">
+                  ✦
+                </span>
+
+                <p>
+                  Handa ka na bang ma-amaze sa gawa
+                  ng asawa mong malupet?
+                </p>
+
+                <span className="message-sparkle">
+                  ✦
+                </span>
+              </div>
+
+              {/* PROGRESS BAR */}
+              <div className="arcade-progress">
+
+                <div className="arcade-progress-track">
+                  <div
+                    className="arcade-progress-fill"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+
+                <div className="arcade-progress-labels">
+                  <span>
+                    {progress >= 100
+                      ? "ALL SYSTEMS READY!"
+                      : "LOADING SURPRISES..."}
+                  </span>
+
+                  <span>{progress}%</span>
+                </div>
+
+              </div>
+
+              {/* ANIMATED CHECKLIST */}
+              <div className="arcade-checklist">
+                {loadingMessages.map((message, index) => {
+                  const done =
+                    progress >= thresholds[index];
+
+                  const active =
+                    !done &&
+                    (index === 0 ||
+                      progress >= thresholds[index - 1]);
+
+                  return (
+                    <div
+                      key={message}
+                      className={
+                        "arcade-check-item" +
+                        (done ? " done" : "") +
+                        (active ? " active" : "")
+                      }
+                    >
+                      <span className="arcade-check-arrow">
+                        {active ? "▶" : ""}
+                      </span>
+
+                      <span className="arcade-check-box">
+                        {done ? "✓" : ""}
+                      </span>
+
+                      <span>{message}</span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* ENTER ROOM BUTTON */}
+              {progress >= 100 && (
+                <button
+                  className="arcade-enter-button"
+                  onClick={() => setScreen("room")}
+                >
+                  ▶ ENTER ROOM
+                </button>
+              )}
+
+            </div>
+            {/* END OF ARCADE BODY */}
+
+            {/* FOOTER */}
+            <footer className="arcade-footer">
+              ♡ A PRESSURE-FREE BIRTHDAY EXPERIENCE ♡
+            </footer>
+
+          </div>
+          {/* END OF ARCADE PANEL */}
+
+        </section>
+      )}
+
+      {/* BEDROOM PLACEHOLDER */}
+      {screen === "room" && (
+        <section className="bedroom-screen">
+          <h1>WELCOME TO BIRTHDAY.EXE</h1>
+          <p>Your birthday world is ready.</p>
+          <p>The interactive bedroom is coming next!</p>
+        </section>
+      )}
+
+    </main>
   );
 }
 
-/* Main arcade window */
+createRoot(document.getElementById("root")).render(
+  <App />
+);
 
-.arcade-panel {
-  position: relative;
-  z-index: 1;
-  width: min(1080px, 100%);
-  background: #10132e;
-  border: 5px solid #a79cff;
-  box-shadow:
-    0 0 0 4px #353080,
-    10px 12px 0 #090c24,
-    0 0 45px rgba(123, 103, 255, 0.32);
-  clip-path: polygon(
-    22px 0,
-    calc(100% - 22px) 0,
-    100% 22px,
-    100% calc(100% - 22px),
-    calc(100% - 22px) 100%,
-    22px 100%,
-    0 calc(100% - 22px),
-    0 22px
-  );
-  animation: arcade-appear 0.5s ease-out;
-}
+Step 2 — Save your changes
+Click Commit changes.
 
-/* Header */
+Use the commit message Fix loading screen JSX structure.
 
-.arcade-header {
-  min-height: 66px;
-  padding: 18px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  background: linear-gradient(
-    90deg,
-    #24245d,
-    #353477,
-    #20204f
-  );
-  border-bottom: 4px solid #7775ec;
-  color: #f0eaff;
-  font-size: clamp(10px, 1.5vw, 15px);
-  letter-spacing: 1px;
-}
+Wait for Vercel to redeploy.
 
-/* Body */
+You don't need to modify style.css right now.
 
-.arcade-body {
-  padding: 35px 55px 42px;
-  text-align: center;
-}
+Step 3 — Test your website
+Once the deployment is marked Ready, open BIRTHDAY.EXE and refresh.
 
-.arcade-controller {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 35px;
-  color: #c4a5ff;
-  font-size: 23px;
-}
+Your website should now:
 
-.controller-symbol {
-  font-size: 50px;
-  filter: drop-shadow(0 4px 0 #44409a);
-}
+Display your original opening artwork.
 
-.arcade-title {
-  margin: 18px 0 32px;
-  color: #e8e5ff;
-  font-size: clamp(25px, 5vw, 56px);
-  line-height: 1.4;
-  letter-spacing: 1px;
-  text-shadow:
-    4px 4px 0 #5655cb,
-    7px 7px 0 #17194e;
-}
+Start the 12-second arcade loading animation when PRESS START is clicked.
 
-/* Birthday message */
+Display the animated checklist.
 
-.arcade-message {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 24px;
-  margin-bottom: 35px;
-  border: 3px solid #bcb0ff;
-  background: #191c43;
-  box-shadow: 5px 5px 0 #080c26;
-  color: #fff;
-}
+Show ▶ ENTER ROOM at 100%.
 
-.arcade-message p {
-  flex: 1;
-  margin: 0;
-  font-size: clamp(10px, 1.5vw, 16px);
-  line-height: 2;
-}
+Open the temporary bedroom welcome screen when clicked.
 
-.message-sparkle {
-  color: #d6b3ff;
-  font-size: 22px;
-}
+The most important thing: Your latest CSS changes should finally appear because the JSX build error has been fixed.
 
-/* Segmented progress bar */
+Once Vercel shows Ready, send me a screenshot of the loading screen. Then we can finalize its size and proportions before moving on to your interactive bedroom! 💜
 
-.arcade-progress-track {
-  height: 35px;
-  padding: 5px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #242750 0,
-      #242750 calc(5% - 3px),
-      #0b102c calc(5% - 3px),
-      #0b102c 5%
-    );
-  border: 4px solid #bcb0ff;
-  box-shadow: 4px 4px 0 #080c26;
-  overflow: hidden;
-}
 
-.arcade-progress-fill {
-  height: 100%;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(5% - 3px),
-      #161b50 calc(5% - 3px),
-      #161b50 5%
-    ),
-    linear-gradient(
-      180deg,
-      #e9b8ff,
-      #a58bff 55%,
-      #7378ef
-    );
-  transition: width 0.4s linear;
-}
+Pasted text(2).txt
+Document
+I found the problem with your CSS! 💜
 
-.arcade-progress-labels {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 18px;
-  color: #f2ebff;
-  font-size: clamp(9px, 1.4vw, 14px);
-  letter-spacing: 2px;
-}
+Your style.css currently has several overlapping versions of the loading-screen design. We've been adding new CSS at the bottom instead of cleaning up the old rules.
 
-/* Checklist */
+For example, your .arcade-panel has four different width settings:
 
-.arcade-checklist {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 13px;
-  width: fit-content;
-  max-width: 100%;
-  margin: 38px auto 0;
-  text-align: left;
-}
+CSS section
 
-.arcade-check-item {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  color: #7771a9;
-  font-size: clamp(9px, 1.2vw, 13px);
-  line-height: 1.8;
-}
+Width
 
-.arcade-check-item.done {
-  color: #a6a1e6;
-}
+Original design
 
-.arcade-check-item.active {
-  color: #f1b8ed;
-  animation: arcade-active 1s infinite alternate;
-}
+1080px
 
-.arcade-check-arrow {
-  width: 16px;
-  color: #f0b2fa;
-}
+First resizing attempt
 
-.arcade-check-box {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 21px;
-  height: 21px;
-  flex-shrink: 0;
-  border: 2px solid currentColor;
-  font-size: 15px;
-}
+780px
 
-/* Enter room button */
+Second resizing attempt
 
-.arcade-enter-button {
-  margin-top: 35px;
-  padding: 17px 28px;
-  background: #a99cff;
-  border: 3px solid #e2d8ff;
-  box-shadow: 5px 5px 0 #34316e;
-  color: #151735;
-  font-family: inherit;
-  font-size: clamp(11px, 1.5vw, 16px);
-  cursor: pointer;
-  animation: arcade-button-appear 0.4s ease-out;
-}
+650px
 
-.arcade-enter-button:hover {
-  background: #c9bcff;
-  transform: translateY(-2px);
-  box-shadow: 5px 7px 0 #34316e;
-}
+Final test
 
-.arcade-enter-button:active {
-  transform: translateY(3px);
-  box-shadow: 2px 2px 0 #34316e;
-}
+500px !important
 
-/* Footer */
+The last rule takes priority, so once your deployment succeeds, the panel should shrink to 500px. But leaving all these conflicting rules makes future adjustments confusing.
 
-.arcade-footer {
-  padding: 19px 12px;
-  border-top: 4px solid #7775ec;
-  background: linear-gradient(
-    90deg,
-    #24245d,
-    #353477,
-    #20204f
-  );
-  color: #d8c8ff;
-  text-align: center;
-  font-size: clamp(9px, 1.3vw, 14px);
-  letter-spacing: 1px;
-  line-height: 1.8;
-}
+Here's what I recommend
+Let's clean up your CSS properly rather than add another block.
 
-/* Animations */
+First, get the corrected main.jsx deployed successfully. Then we'll replace the repeated loading-screen CSS with one consistent design.
 
-@keyframes arcade-twinkle {
-  from { opacity: 0.4; }
-  to { opacity: 1; }
-}
+For the final loading screen, I'd aim for:
 
-@keyframes arcade-active {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
-}
+650px maximum width on desktop.
 
-@keyframes arcade-appear {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+A centered arcade panel with visible nighttime scenery around it.
 
-@keyframes arcade-button-appear {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+A compact header, message, progress bar, and checklist.
 
-/* Mobile */
+A button that appears at 100% without automatically entering the bedroom.
 
-@media (max-width: 600px) {
-  .loading-screen {
-    padding: 20px 10px;
-  }
+Responsive sizing for mobile.
 
-  .arcade-panel {
-    border-width: 3px;
-  }
+Your opening-screen artwork and invisible PRESS START hotspot can remain untouched.
 
-  .arcade-header {
-    min-height: 50px;
-    padding: 13px 15px;
-    font-size: 9px;
-  }
+One question: Have you already committed the corrected main.jsx I sent you, and is the latest Vercel deployment showing Ready?
 
-  .arcade-body {
-    padding: 28px 15px 35px;
-  }
+User attachment
+yay looks good
+YAYYYY!! 😭💜🎮 THIS LOOKS SO MUCH BETTER!!
 
-  .arcade-controller {
-    gap: 15px;
-  }
+The loading screen finally has the proportions we wanted! The arcade window is centered, the text is readable, and we can actually appreciate the purple nighttime skyline.
 
-  .controller-symbol {
-    font-size: 35px;
-  }
+I especially like how the HELLO, LOVE! title stands out without overwhelming everything else.
 
-  .arcade-title {
-    margin: 18px 0 24px;
-    font-size: 24px;
-  }
+I'm happy with this size. I wouldn't change it anymore!
 
-  .arcade-message {
-    gap: 10px;
-    padding: 14px 10px;
-    margin-bottom: 28px;
-  }
+Now that our opening screen and loading screen are working, we're ready for the exciting part: the interactive pixel-art bedroom! 🏙️✨
 
-  .arcade-progress-track {
-    height: 28px;
-  }
+We'll use the bedroom artwork you approved earlier and gradually make all 12 objects clickable, starting with the window, computer, and bed.
 
-  .arcade-progress-labels {
-    font-size: 9px;
-    letter-spacing: 0;
-  }
+But first, we should get the bedroom artwork displaying correctly, just like we did with the opening screen.
 
-  .arcade-checklist {
-    margin-top: 28px;
-    gap: 10px;
-  }
+Are you ready to work on the bedroom now? 💙
 
-  .arcade-check-item {
-    gap: 8px;
-    font-size: 9px;
-  }
-
-  .arcade-check-arrow {
-    width: 10px;
-  }
 
   .arcade-check-box {
     width: 17px;
@@ -536,11 +544,12 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 36px 24px;
+  padding: 24px 16px;
 }
 
 .bedroom-layout {
-  width: min(1050px, 100%);
+  width: min(1160px, 96vw);
+  margin: 0 auto;
 }
 
 .bedroom-header {
@@ -617,314 +626,26 @@ button {
 
   .bedroom-caption {
     font-size: 12px;
-    margin-top: 18px;
+    margin-top: 12px;
   }
 }
 
 
-/* Smaller screens */
 
-@media (max-width: 600px) {
-  .loading-screen {
-    padding: 16px 10px;
-  }
-
-  .arcade-panel {
-    width: 100%;
-    max-height: calc(100dvh - 32px);
-  }
-
-  .arcade-body {
-    padding: 20px 14px;
-  }
-
-  .arcade-title {
-    font-size: clamp(19px, 5vw, 26px);
-  }
-
-  .arcade-message p {
-    font-size: 10px;
-  }
-
-  .arcade-check-item {
-    font-size: 9px;
-  }
-}
-
-/* SMALLER FLOATING ARCADE WINDOW */
-
-.loading-screen {
-  min-height: 100dvh;
-  padding: 35px 20px;
-  box-sizing: border-box;
-}
-
-.arcade-panel {
-  width: min(650px, 90vw);
-  max-height: calc(100dvh - 70px);
+/* Independent screen sizing; no zoom or forced scaling */
+.loading-screen .arcade-panel {
+  max-height: calc(100dvh - 32px);
   overflow-y: auto;
 }
 
-.arcade-header {
-  min-height: 42px;
-  padding: 10px 18px;
-  font-size: 10px;
-}
-
-.arcade-body {
-  padding: 15px 24px 22px;
-}
-
-.arcade-controller {
-  gap: 12px;
-  font-size: 14px;
-}
-
-.controller-symbol {
-  font-size: 26px;
-}
-
-.arcade-title {
-  font-size: clamp(20px, 2.8vw, 32px);
-  margin: 8px 0 16px;
-  text-shadow: 3px 3px 0 #5655cb;
-}
-
-.arcade-message {
-  padding: 10px 12px;
-  margin-bottom: 18px;
-}
-
-.arcade-message p {
-  font-size: 10px;
-  line-height: 1.7;
-}
-
-.message-sparkle {
-  font-size: 14px;
-}
-
-.arcade-progress-track {
-  height: 22px;
-  padding: 3px;
-  border-width: 3px;
-}
-
-.arcade-progress-labels {
-  margin-top: 10px;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-.arcade-checklist {
-  margin: 20px auto 0;
-  gap: 7px;
-}
-
-.arcade-check-item {
-  font-size: 9px;
-  gap: 8px;
-}
-
-.arcade-check-box {
-  width: 15px;
-  height: 15px;
-  font-size: 11px;
-}
-
-.arcade-enter-button {
-  margin-top: 18px;
-  padding: 11px 18px;
-  font-size: 11px;
-}
-
-.arcade-footer {
-  padding: 10px;
-  font-size: 9px;
+@media (max-height: 650px) and (min-width: 601px) {
+  .loading-screen { align-items: flex-start; }
 }
 
 @media (max-width: 600px) {
-  .arcade-panel {
-    width: 95vw;
-  }
+  .bedroom-layout { width: 100%; }
+  .bedroom-artwork { aspect-ratio: 16 / 9; }
+  .loading-screen .arcade-panel { width: 100%; }
 
-  .arcade-body {
-    padding: 16px 12px;
-  }
 
-  .arcade-title {
-    font-size: 20px;
-  }
 
-  .arcade-message p {
-    font-size: 9px;
-  }
-
-  .arcade-check-item {
-    font-size: 8px;
-  }
-}
-.arcade-panel {
-  width: 500px !important;
-  max-width: 90vw !important;
-}
-
-/* =====================================
-   BIRTHDAY.EXE — BEDROOM ARTWORK
-   ===================================== */
-
-.bedroom-screen {
-  width: 100%;
-  min-height: 100dvh;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #10182e;
-  overflow: hidden;
-}
-
-.bedroom-artwork {
-  position: relative;
-  width: min(100vw, 177.78dvh);
-  aspect-ratio: 16 / 9;
-  flex-shrink: 0;
-}
-
-.bedroom-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  image-rendering: auto;
-}
-
-/* FINAL BEDROOM SIZE FIX */
-
-.bedroom-screen {
-  width: 100%;
-  min-height: 100dvh;
-  height: auto;
-  padding: 32px 20px 48px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
-}
-
-.bedroom-layout {
-  width: 100%;
-  max-width: 1050px;
-  margin: 0 auto;
-}
-
-.bedroom-header {
-  width: 100%;
-  margin-bottom: 16px;
-}
-
-.bedroom-artwork {
-  position: relative;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.bedroom-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  max-width: 100%;
-}
-
-.bedroom-caption {
-  margin-top: 24px;
-  text-align: center;
-}
-
-/* Fit the bedroom on shorter desktop screens */
-@media (min-width: 768px) {
-  .bedroom-layout {
-    max-width: min(1050px, 90vw, 145vh);
-  }
-}
-
-/* =====================================
-   SCREEN SIZING — SEPARATE CONTROLS
-   ===================================== */
-
-/* BEDROOM — larger artwork */
-.bedroom-screen {
-  width: 100%;
-  min-height: 100dvh;
-  height: auto;
-  padding: 24px 20px 40px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bedroom-layout {
-  width: min(1150px, 94vw);
-  max-width: none;
-  margin: 0 auto;
-}
-
-.bedroom-artwork {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.bedroom-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* LOADING SCREEN — independent sizing */
-.loading-screen {
-  width: 100%;
-  min-height: 100dvh;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.loading-screen .arcade-panel {
-  width: min(850px, 94vw);
-  max-width: none;
-  margin: 0 auto;
-  transform: none;
-  zoom: 1;
-}
-
-/* Smaller devices */
-@media (max-width: 700px) {
-  .bedroom-screen {
-    padding: 16px 10px;
-  }
-
-  .bedroom-layout {
-    width: 100%;
-  }
-
-  .loading-screen {
-    padding: 12px;
-  }
-
-  .loading-screen .arcade-panel {
-    width: 100%;
-  }
-}
