@@ -101,141 +101,346 @@ button {
 }
 
 
-/* LOADING SCREEN */
+
+/* =========================================
+   BIRTHDAY.EXE - RETRO ARCADE LOADING
+   ========================================= */
 
 .loading-screen {
   position: relative;
+  width: 100%;
   min-height: 100dvh;
-  padding: 24px;
-  background:
-    radial-gradient(
-      circle at 50% 75%,
-      #584b94 0%,
-      #29365f 48%,
-      #121b36 100%
-    );
+  padding: 28px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #0c1331 0%,
+    #1c2255 52%,
+    #5d3b9b 82%,
+    #171737 100%
+  );
 }
 
-.loading-stars {
+/* Night sky */
+
+.boot-city {
   position: absolute;
-  top: 12%;
-  color: #d6c5ff;
+  inset: 0;
+  pointer-events: none;
+}
+
+.city-stars {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #b8a0ff;
   font-size: 25px;
-  letter-spacing: 35px;
-  animation: twinkle 2s ease-in-out infinite;
+  letter-spacing: 65px;
+  animation: arcade-twinkle 2.5s infinite alternate;
 }
 
-.boot-panel {
+.city-skyline {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 24%;
+  background:
+    linear-gradient(
+      transparent 0%,
+      rgba(10, 14, 43, 0.85) 100%
+    );
+  clip-path: polygon(
+    0 55%, 4% 55%, 4% 32%,
+    9% 32%, 9% 70%, 14% 70%,
+    14% 15%, 19% 15%, 19% 48%,
+    25% 48%, 25% 65%, 31% 65%,
+    31% 24%, 36% 24%, 36% 70%,
+    43% 70%, 43% 40%, 49% 40%,
+    49% 62%, 55% 62%, 55% 18%,
+    60% 18%, 60% 58%, 67% 58%,
+    67% 35%, 73% 35%, 73% 72%,
+    79% 72%, 79% 20%, 84% 20%,
+    84% 52%, 91% 52%, 91% 29%,
+    96% 29%, 96% 65%, 100% 65%,
+    100% 100%, 0 100%
+  );
+}
+
+/* Main arcade window */
+
+.arcade-panel {
   position: relative;
-  width: min(650px, 100%);
-  background: #1b2446;
-  border: 4px solid #b7a4e9;
+  z-index: 1;
+  width: min(1080px, 100%);
+  background: #10132e;
+  border: 5px solid #a79cff;
   box-shadow:
-    8px 8px 0 #0b1127,
-    0 0 45px rgba(176, 145, 255, 0.2);
-  animation: panel-appear 0.5s ease-out;
+    0 0 0 4px #353080,
+    10px 12px 0 #090c24,
+    0 0 45px rgba(123, 103, 255, 0.32);
+  clip-path: polygon(
+    22px 0,
+    calc(100% - 22px) 0,
+    100% 22px,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    22px 100%,
+    0 calc(100% - 22px),
+    0 22px
+  );
+  animation: arcade-appear 0.5s ease-out;
 }
 
-.boot-header {
-  padding: 16px;
-  background: #a18bdb;
-  color: #171b38;
+/* Header */
+
+.arcade-header {
+  min-height: 66px;
+  padding: 18px 30px;
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  font-size: 10px;
-  line-height: 1.8;
-}
-
-.boot-content {
-  padding: 45px 30px;
-  text-align: center;
-}
-
-.boot-heart {
-  font-size: 65px;
-  color: #f2b6db;
-  margin-bottom: 28px;
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-.boot-content h1 {
-  color: #e1c9ff;
-  font-size: clamp(13px, 2.4vw, 21px);
-  line-height: 1.8;
-  margin-bottom: 25px;
-}
-
-.birthday-question {
-  color: #ffffff;
-  font-size: clamp(10px, 1.6vw, 13px);
-  line-height: 2.4;
-  margin-bottom: 35px;
-}
-
-.loading-track {
-  width: 100%;
-  height: 24px;
-  border: 3px solid #b7a4e9;
-  padding: 3px;
-  background: #10172d;
-}
-
-.loading-fill {
-  height: 100%;
+  align-items: center;
+  gap: 15px;
   background: linear-gradient(
     90deg,
-    #7d9cdb,
-    #c9a3f5,
-    #f1b8dd
+    #24245d,
+    #353477,
+    #20204f
   );
-  transition: width 0.1s linear;
+  border-bottom: 4px solid #7775ec;
+  color: #f0eaff;
+  font-size: clamp(10px, 1.5vw, 15px);
+  letter-spacing: 1px;
 }
 
-.loading-status {
+/* Body */
+
+.arcade-body {
+  padding: 35px 55px 42px;
+  text-align: center;
+}
+
+.arcade-controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  color: #c4a5ff;
+  font-size: 23px;
+}
+
+.controller-symbol {
+  font-size: 50px;
+  filter: drop-shadow(0 4px 0 #44409a);
+}
+
+.arcade-title {
+  margin: 18px 0 32px;
+  color: #e8e5ff;
+  font-size: clamp(25px, 5vw, 56px);
+  line-height: 1.4;
+  letter-spacing: 1px;
+  text-shadow:
+    4px 4px 0 #5655cb,
+    7px 7px 0 #17194e;
+}
+
+/* Birthday message */
+
+.arcade-message {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  margin-top: 15px;
-  color: #c5b5ed;
-  font-size: 9px;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  margin-bottom: 35px;
+  border: 3px solid #bcb0ff;
+  background: #191c43;
+  box-shadow: 5px 5px 0 #080c26;
+  color: #fff;
+}
+
+.arcade-message p {
+  flex: 1;
+  margin: 0;
+  font-size: clamp(10px, 1.5vw, 16px);
+  line-height: 2;
+}
+
+.message-sparkle {
+  color: #d6b3ff;
+  font-size: 22px;
+}
+
+/* Segmented progress bar */
+
+.arcade-progress-track {
+  height: 35px;
+  padding: 5px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #242750 0,
+      #242750 calc(5% - 3px),
+      #0b102c calc(5% - 3px),
+      #0b102c 5%
+    );
+  border: 4px solid #bcb0ff;
+  box-shadow: 4px 4px 0 #080c26;
+  overflow: hidden;
+}
+
+.arcade-progress-fill {
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(5% - 3px),
+      #161b50 calc(5% - 3px),
+      #161b50 5%
+    ),
+    linear-gradient(
+      180deg,
+      #e9b8ff,
+      #a58bff 55%,
+      #7378ef
+    );
+  transition: width 0.4s linear;
+}
+
+.arcade-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 18px;
+  color: #f2ebff;
+  font-size: clamp(9px, 1.4vw, 14px);
+  letter-spacing: 2px;
+}
+
+/* Checklist */
+
+.arcade-checklist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 38px auto 0;
+  text-align: left;
+}
+
+.arcade-check-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #7771a9;
+  font-size: clamp(9px, 1.2vw, 13px);
   line-height: 1.8;
 }
 
-.loading-message {
-  margin-top: 30px;
-  color: #e8b9e4;
-  font-size: 10px;
-  line-height: 2;
+.arcade-check-item.done {
+  color: #a6a1e6;
 }
 
-.boot-footer {
-  padding: 18px;
+.arcade-check-item.active {
+  color: #f1b8ed;
+  animation: arcade-active 1s infinite alternate;
+}
+
+.arcade-check-arrow {
+  width: 16px;
+  color: #f0b2fa;
+}
+
+.arcade-check-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  border: 2px solid currentColor;
+  font-size: 15px;
+}
+
+/* Enter room button */
+
+.arcade-enter-button {
+  margin-top: 35px;
+  padding: 17px 28px;
+  background: #a99cff;
+  border: 3px solid #e2d8ff;
+  box-shadow: 5px 5px 0 #34316e;
+  color: #151735;
+  font-family: inherit;
+  font-size: clamp(11px, 1.5vw, 16px);
+  cursor: pointer;
+  animation: arcade-button-appear 0.4s ease-out;
+}
+
+.arcade-enter-button:hover {
+  background: #c9bcff;
+  transform: translateY(-2px);
+  box-shadow: 5px 7px 0 #34316e;
+}
+
+.arcade-enter-button:active {
+  transform: translateY(3px);
+  box-shadow: 2px 2px 0 #34316e;
+}
+
+/* Footer */
+
+.arcade-footer {
+  padding: 19px 12px;
+  border-top: 4px solid #7775ec;
+  background: linear-gradient(
+    90deg,
+    #24245d,
+    #353477,
+    #20204f
+  );
+  color: #d8c8ff;
   text-align: center;
-  border-top: 2px solid #665b9c;
-  color: #a99ad8;
-  font-size: 9px;
-  line-height: 2;
+  font-size: clamp(9px, 1.3vw, 14px);
+  letter-spacing: 1px;
+  line-height: 1.8;
 }
 
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+/* Animations */
+
+@keyframes arcade-twinkle {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+@keyframes arcade-active {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
 }
 
-@keyframes panel-appear {
+@keyframes arcade-appear {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes arcade-button-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -243,22 +448,78 @@ button {
   }
 }
 
+/* Mobile */
+
 @media (max-width: 600px) {
-  .boot-content {
-    padding: 30px 18px;
+  .loading-screen {
+    padding: 20px 10px;
   }
 
-  .boot-header {
-    font-size: 8px;
+  .arcade-panel {
+    border-width: 3px;
   }
 
-  .loading-stars {
-    letter-spacing: 12px;
+  .arcade-header {
+    min-height: 50px;
+    padding: 13px 15px;
+    font-size: 9px;
   }
 
-  .loading-status,
-  .boot-footer {
-    font-size: 8px;
+  .arcade-body {
+    padding: 28px 15px 35px;
+  }
+
+  .arcade-controller {
+    gap: 15px;
+  }
+
+  .controller-symbol {
+    font-size: 35px;
+  }
+
+  .arcade-title {
+    margin: 18px 0 24px;
+    font-size: 24px;
+  }
+
+  .arcade-message {
+    gap: 10px;
+    padding: 14px 10px;
+    margin-bottom: 28px;
+  }
+
+  .arcade-progress-track {
+    height: 28px;
+  }
+
+  .arcade-progress-labels {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .arcade-checklist {
+    margin-top: 28px;
+    gap: 10px;
+  }
+
+  .arcade-check-item {
+    gap: 8px;
+    font-size: 9px;
+  }
+
+  .arcade-check-arrow {
+    width: 10px;
+  }
+
+  .arcade-check-box {
+    width: 17px;
+    height: 17px;
+    font-size: 12px;
+  }
+
+  .arcade-footer {
+    padding: 15px 8px;
+    font-size: 9px;
   }
 }
 
