@@ -26,10 +26,12 @@ button {
   min-height: 100dvh;
 }
 
+
 /* OPENING SCREEN */
 
 .opening-screen {
   position: relative;
+  isolation: isolate;
   width: 100%;
   min-height: 100dvh;
   background-color: #182849;
@@ -40,7 +42,23 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
+
+/* Blurred background to fill the sides */
+
+.opening-screen::before {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  z-index: -1;
+  background-image: url('/opening-screen.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(22px) brightness(0.75);
+}
+
 
 .computer-hotspot {
   position: absolute;
