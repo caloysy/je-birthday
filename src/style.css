@@ -774,3 +774,7 @@ button {
     font-size: 8px;
   }
 }
+.arcade-panel {
+  width: 500px !important;
+  max-width: 90vw !important;
+}
