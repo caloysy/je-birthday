@@ -21,7 +21,7 @@ function App() {
 
         return Math.min(current + 5, 100);
       });
-    }, 250);
+    }, 600);
 
     return () => clearInterval(interval);
   }, [screen]);
@@ -68,7 +68,7 @@ function App() {
       <div className="boot-content">
         <div className="boot-heart">♡</div>
 
-        <h1>HELLO, BIRTHDAY BOY!</h1>
+        <h1>HELLO, LOVE!</h1>
 
         <p className="birthday-question">
           Handa ka na bang ma-amaze sa gawa ng
