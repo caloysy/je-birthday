@@ -26,15 +26,6 @@ function App() {
     return () => clearInterval(interval);
   }, [screen]);
 
-  useEffect(() => {
-    if (screen !== "loading" || progress < 100) return;
-
-    const timeout = setTimeout(() => {
-      setScreen("room");
-    }, 650);
-
-    return () => clearTimeout(timeout);
-  }, [screen, progress]);
 
   return (
     <main className="app">
@@ -140,15 +131,16 @@ function App() {
           })}
         </div>
 
-        {progress >= 100 && (
-          <button
-            className="arcade-enter-button"
-            onClick={() => setScreen("bedroom")}
-          >
-            ▶ ENTER ROOM
-          </button>
-        )}
-      </div>
+        
+{progress >= 100 && (
+  <button
+    className="arcade-enter-button"
+    onClick={() => setScreen("room")}
+  >
+    ▶ ENTER ROOM
+  </button>
+)}
+
 
       <footer className="arcade-footer">
         ♡ A PRESSURE-FREE BIRTHDAY EXPERIENCE ♡
