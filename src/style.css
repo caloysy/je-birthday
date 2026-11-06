@@ -1,4 +1,7 @@
 
+import React, { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import "./style.css";
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
