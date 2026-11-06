@@ -100,57 +100,168 @@ button {
   50% { opacity: 0.65; }
 }
 
+
 /* LOADING SCREEN */
 
 .loading-screen {
+  position: relative;
   min-height: 100dvh;
-  padding: 30px;
-  background: linear-gradient(
-    180deg,
-    #101a34,
-    #26365e,
-    #34365b
-  );
+  padding: 24px;
+  background:
+    radial-gradient(
+      circle at 50% 75%,
+      #584b94 0%,
+      #29365f 48%,
+      #121b36 100%
+    );
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.loading-stars {
+  position: absolute;
+  top: 12%;
+  color: #d6c5ff;
+  font-size: 25px;
+  letter-spacing: 35px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.boot-panel {
+  position: relative;
+  width: min(650px, 100%);
+  background: #1b2446;
+  border: 4px solid #b7a4e9;
+  box-shadow:
+    8px 8px 0 #0b1127,
+    0 0 45px rgba(176, 145, 255, 0.2);
+  animation: panel-appear 0.5s ease-out;
+}
+
+.boot-header {
+  padding: 16px;
+  background: #a18bdb;
+  color: #171b38;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.boot-content {
+  padding: 45px 30px;
   text-align: center;
-  gap: 24px;
 }
 
-.loading-screen h1 {
-  color: #d2c4ff;
-  font-size: clamp(18px, 4vw, 36px);
-  line-height: 1.6;
+.boot-heart {
+  font-size: 65px;
+  color: #f2b6db;
+  margin-bottom: 28px;
+  animation: heartbeat 1.5s ease-in-out infinite;
 }
 
-.loading-screen p {
-  font-size: clamp(9px, 1.5vw, 13px);
-  line-height: 2;
+.boot-content h1 {
+  color: #e1c9ff;
+  font-size: clamp(13px, 2.4vw, 21px);
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.birthday-question {
+  color: #ffffff;
+  font-size: clamp(10px, 1.6vw, 13px);
+  line-height: 2.4;
+  margin-bottom: 35px;
 }
 
 .loading-track {
-  width: min(400px, 85vw);
-  height: 22px;
-  border: 3px solid #a5a6d8;
-  background: #0d1529;
+  width: 100%;
+  height: 24px;
+  border: 3px solid #b7a4e9;
   padding: 3px;
+  background: #10172d;
 }
 
 .loading-fill {
   height: 100%;
   background: linear-gradient(
     90deg,
-    #5c83bb,
-    #b9a2ed
+    #7d9cdb,
+    #c9a3f5,
+    #f1b8dd
   );
   transition: width 0.1s linear;
 }
 
-.loading-message {
-  color: #b7bbde;
+.loading-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+  color: #c5b5ed;
+  font-size: 9px;
+  line-height: 1.8;
 }
+
+.loading-message {
+  margin-top: 30px;
+  color: #e8b9e4;
+  font-size: 10px;
+  line-height: 2;
+}
+
+.boot-footer {
+  padding: 18px;
+  text-align: center;
+  border-top: 2px solid #665b9c;
+  color: #a99ad8;
+  font-size: 9px;
+  line-height: 2;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes panel-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .boot-content {
+    padding: 30px 18px;
+  }
+
+  .boot-header {
+    font-size: 8px;
+  }
+
+  .loading-stars {
+    letter-spacing: 12px;
+  }
+
+  .loading-status,
+  .boot-footer {
+    font-size: 8px;
+  }
+}
+
 
 /* BEDROOM PLACEHOLDER */
 
