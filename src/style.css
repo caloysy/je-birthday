@@ -548,3 +548,115 @@ button {
   font-size: clamp(9px, 1.5vw, 13px);
   line-height: 2;
 }
+
+/* COMPACT RETRO LOADING SCREEN */
+
+.loading-screen {
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.arcade-panel {
+  width: min(780px, 92vw);
+  max-height: calc(100dvh - 70px);
+  overflow-y: auto;
+}
+
+.arcade-header {
+  min-height: 48px;
+  padding: 12px 22px;
+}
+
+.arcade-body {
+  padding: 18px 32px 24px;
+}
+
+.arcade-controller {
+  gap: 18px;
+  font-size: 16px;
+}
+
+.controller-symbol {
+  font-size: 32px;
+}
+
+.arcade-title {
+  font-size: clamp(22px, 3.2vw, 38px);
+  margin: 10px 0 20px;
+}
+
+.arcade-message {
+  padding: 12px 16px;
+  margin-bottom: 22px;
+}
+
+.arcade-message p {
+  font-size: clamp(10px, 1.1vw, 13px);
+  line-height: 1.8;
+}
+
+.arcade-progress-track {
+  height: 26px;
+  padding: 3px;
+}
+
+.arcade-progress-labels {
+  margin-top: 12px;
+  font-size: 11px;
+}
+
+.arcade-checklist {
+  margin: 24px auto 0;
+  gap: 8px;
+}
+
+.arcade-check-item {
+  font-size: 10px;
+  gap: 10px;
+}
+
+.arcade-check-box {
+  width: 17px;
+  height: 17px;
+  font-size: 12px;
+}
+
+.arcade-enter-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 12px;
+}
+
+.arcade-footer {
+  padding: 12px;
+  font-size: 10px;
+}
+
+/* Smaller screens */
+
+@media (max-width: 600px) {
+  .loading-screen {
+    padding: 16px 10px;
+  }
+
+  .arcade-panel {
+    width: 100%;
+    max-height: calc(100dvh - 32px);
+  }
+
+  .arcade-body {
+    padding: 20px 14px;
+  }
+
+  .arcade-title {
+    font-size: clamp(19px, 5vw, 26px);
+  }
+
+  .arcade-message p {
+    font-size: 10px;
+  }
+
+  .arcade-check-item {
+    font-size: 9px;
+  }
+}
