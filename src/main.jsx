@@ -52,32 +52,58 @@ function App() {
         </section>
       )}
 
-      {screen === "loading" && (
-        <section className="loading-screen">
-          <h1>BIRTHDAY.EXE</h1>
+     
+{screen === "loading" && (
+  <section className="loading-screen">
+    <div className="loading-stars" aria-hidden="true">
+      ✦ · ✧ · ✦
+    </div>
 
-          <p>Loading birthday world...</p>
+    <div className="boot-panel">
+      <div className="boot-header">
+        <span>♡ BIRTHDAY.EXE</span>
+        <span>BOOTING...</span>
+      </div>
 
-          <div className="loading-track">
-            <div
-              className="loading-fill"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+      <div className="boot-content">
+        <div className="boot-heart">♡</div>
 
-          <p>{progress}%</p>
+        <h1>HELLO, BIRTHDAY BOY!</h1>
 
-          <p className="loading-message">
-            {progress < 30
-              ? "Initializing memories..."
-              : progress < 60
-              ? "Preparing surprises..."
-              : progress < 90
-              ? "Loading cozy bedroom..."
-              : "Welcome to your birthday!"}
-          </p>
-        </section>
-      )}
+        <p className="birthday-question">
+          Handa ka na bang ma-amaze sa gawa ng
+          asawa mong malupet?
+        </p>
+
+        <div className="loading-track">
+          <div
+            className="loading-fill"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        <div className="loading-status">
+          <span>LOADING SURPRISES...</span>
+          <span>{progress}%</span>
+        </div>
+
+        <p className="loading-message">
+          {progress < 30
+            ? "Initializing birthday magic..."
+            : progress < 60
+            ? "Collecting all the cuteness..."
+            : progress < 90
+            ? "Preparing your special world..."
+            : "READY NA, ASAWA KO! ♡"}
+        </p>
+      </div>
+
+      <div className="boot-footer">
+        ✦ MADE WITH LOVE AND KAARTEHAN ✦
+      </div>
+    </div>
+  </section>
+)}
 
       {screen === "room" && (
         <section className="bedroom-screen">
