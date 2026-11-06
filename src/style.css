@@ -27,6 +27,7 @@ button {
 }
 
 
+
 /* OPENING SCREEN */
 
 .opening-screen {
@@ -45,7 +46,7 @@ button {
   overflow: hidden;
 }
 
-/* Blurred background to fill the sides */
+/* Blurred extension behind the artwork */
 
 .opening-screen::before {
   content: "";
@@ -57,6 +58,35 @@ button {
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(22px) brightness(0.75);
+}
+
+/* Keep the original artwork sharp and visible */
+
+.opening-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/opening-screen.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+/* Keep the PRESS START button clickable */
+
+.computer-hotspot {
+  position: absolute;
+  z-index: 2;
+  width: 20%;
+  height: 8%;
+  left: 50%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
