@@ -188,14 +188,20 @@ function App() {
         </section>
       )}
 
-      {/* BEDROOM PLACEHOLDER */}
-      {screen === "room" && (
-        <section className="bedroom-screen">
-          <h1>WELCOME TO BIRTHDAY.EXE</h1>
-          <p>Your birthday world is ready.</p>
-          <p>The interactive bedroom is coming next!</p>
-        </section>
-      )}
+   
+{/* INTERACTIVE BEDROOM */}
+{screen === "room" && (
+  <section className="bedroom-screen">
+    <div className="bedroom-artwork">
+      <img
+        src="/bedroom.png"
+        alt="Cozy pixel-art birthday bedroom"
+        className="bedroom-image"
+      />
+    </div>
+  </section>
+)}
+
 
     </main>
   );
