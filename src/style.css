@@ -660,3 +660,117 @@ button {
     font-size: 9px;
   }
 }
+
+/* SMALLER FLOATING ARCADE WINDOW */
+
+.loading-screen {
+  min-height: 100dvh;
+  padding: 35px 20px;
+  box-sizing: border-box;
+}
+
+.arcade-panel {
+  width: min(650px, 90vw);
+  max-height: calc(100dvh - 70px);
+  overflow-y: auto;
+}
+
+.arcade-header {
+  min-height: 42px;
+  padding: 10px 18px;
+  font-size: 10px;
+}
+
+.arcade-body {
+  padding: 15px 24px 22px;
+}
+
+.arcade-controller {
+  gap: 12px;
+  font-size: 14px;
+}
+
+.controller-symbol {
+  font-size: 26px;
+}
+
+.arcade-title {
+  font-size: clamp(20px, 2.8vw, 32px);
+  margin: 8px 0 16px;
+  text-shadow: 3px 3px 0 #5655cb;
+}
+
+.arcade-message {
+  padding: 10px 12px;
+  margin-bottom: 18px;
+}
+
+.arcade-message p {
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.message-sparkle {
+  font-size: 14px;
+}
+
+.arcade-progress-track {
+  height: 22px;
+  padding: 3px;
+  border-width: 3px;
+}
+
+.arcade-progress-labels {
+  margin-top: 10px;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.arcade-checklist {
+  margin: 20px auto 0;
+  gap: 7px;
+}
+
+.arcade-check-item {
+  font-size: 9px;
+  gap: 8px;
+}
+
+.arcade-check-box {
+  width: 15px;
+  height: 15px;
+  font-size: 11px;
+}
+
+.arcade-enter-button {
+  margin-top: 18px;
+  padding: 11px 18px;
+  font-size: 11px;
+}
+
+.arcade-footer {
+  padding: 10px;
+  font-size: 9px;
+}
+
+@media (max-width: 600px) {
+  .arcade-panel {
+    width: 95vw;
+  }
+
+  .arcade-body {
+    padding: 16px 12px;
+  }
+
+  .arcade-title {
+    font-size: 20px;
+  }
+
+  .arcade-message p {
+    font-size: 9px;
+  }
+
+  .arcade-check-item {
+    font-size: 8px;
+  }
+}
