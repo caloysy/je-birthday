@@ -90,7 +90,7 @@ function App() {
               </div>
 
               <h1 className="arcade-title">
-                HELLO, LOVE!
+                HELLO, LOVE KO!
               </h1>
 
               <div className="arcade-message">
