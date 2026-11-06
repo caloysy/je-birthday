@@ -189,18 +189,34 @@ function App() {
       )}
 
    
-{/* INTERACTIVE BEDROOM */}
+
+{/* BIRTHDAY BEDROOM */}
 {screen === "room" && (
   <section className="bedroom-screen">
-    <div className="bedroom-artwork">
-      <img
-        src="/bedroom.png"
-        alt="Cozy pixel-art birthday bedroom"
-        className="bedroom-image"
-      />
+    <div className="bedroom-layout">
+
+      <div className="bedroom-header">
+        <h1>✦ BIRTHDAY ROOM ✦</h1>
+        <span>click objects to explore</span>
+      </div>
+
+      <div className="bedroom-artwork">
+        <img
+          src="/bedroom.png"
+          alt="Cozy pixel-art birthday bedroom"
+          className="bedroom-image"
+        />
+      </div>
+
+      <p className="bedroom-caption">
+        A little room made just for you.
+        Explore anything you like. ♡
+      </p>
+
     </div>
   </section>
 )}
+
 
 
     </main>
