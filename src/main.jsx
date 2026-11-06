@@ -28,10 +28,10 @@ function App() {
   }, [screen]);
 
   const loadingMessages = [
-    "Initializing birthday magic...",
-    "Collecting all the cuteness...",
-    "Preparing your special world...",
-    "Finalizing..."
+    "Tumatae...",
+    "Nangungulangot...",
+    "Namimiss ka...",
+    "ETO NA..."
   ];
 
   const thresholds = [25, 50, 75, 100];
@@ -122,7 +122,7 @@ function App() {
                   <span>
                     {progress >= 100
                       ? "ALL SYSTEMS READY!"
-                      : "LOADING SURPRISES..."}
+                      : "LOADING BUSSENG..."}
                   </span>
 
                   <span>{progress}%</span>
@@ -179,7 +179,7 @@ function App() {
 
             {/* FOOTER */}
             <footer className="arcade-footer">
-              ♡ A PRESSURE-FREE BIRTHDAY EXPERIENCE ♡
+              ♡ MADE WITH LOVE AND KAARTEHAN ♡
             </footer>
 
           </div>
