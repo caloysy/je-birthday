@@ -53,54 +53,106 @@ function App() {
       )}
 
      
+
 {screen === "loading" && (
   <section className="loading-screen">
-    <div className="loading-stars" aria-hidden="true">
-      ✦ · ✧ · ✦
+    <div className="boot-city" aria-hidden="true">
+      <span className="city-stars">✦ · ✧ · ✦ · ✧</span>
+      <div className="city-skyline" />
     </div>
 
-    <div className="boot-panel">
-      <div className="boot-header">
-        <span>♡ BIRTHDAY.EXE</span>
-        <span>BOOTING...</span>
-      </div>
+    <div className="arcade-panel">
+      <header className="arcade-header">
+        <span>🎮 BIRTHDAY.EXE</span>
+        <span>
+          {progress >= 100 ? "READY!" : "BOOTING..."}
+        </span>
+      </header>
 
-      <div className="boot-content">
-        <div className="boot-heart">♡</div>
-
-        <h1>HELLO, LOVE!</h1>
-
-        <p className="birthday-question">
-          Handa ka na bang ma-amaze sa gawa ng
-          asawa mong malupet?
-        </p>
-
-        <div className="loading-track">
-          <div
-            className="loading-fill"
-            style={{ width: `${progress}%` }}
-          />
+      <div className="arcade-body">
+        <div className="arcade-controller" aria-hidden="true">
+          <span>✦</span>
+          <span className="controller-symbol">🎮</span>
+          <span>✦</span>
         </div>
 
-        <div className="loading-status">
-          <span>LOADING SURPRISES...</span>
-          <span>{progress}%</span>
+        <h1 className="arcade-title">HELLO, LOVE!</h1>
+
+        <div className="arcade-message">
+          <span className="message-sparkle">✦</span>
+          <p>
+            Handa ka na bang ma-amaze sa gawa ng
+            asawa mong malupet?
+          </p>
+          <span className="message-sparkle">✦</span>
         </div>
 
-        <p className="loading-message">
-          {progress < 30
-            ? "Initializing birthday magic..."
-            : progress < 60
-            ? "Collecting all the cuteness..."
-            : progress < 90
-            ? "Preparing your special world..."
-            : "READY NA, ASAWA KO! ♡"}
-        </p>
+        <div className="arcade-progress">
+          <div className="arcade-progress-track">
+            <div
+              className="arcade-progress-fill"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+
+          <div className="arcade-progress-labels">
+            <span>
+              {progress >= 100
+                ? "ALL SYSTEMS READY!"
+                : "LOADING SURPRISES..."}
+            </span>
+            <span>{progress}%</span>
+          </div>
+        </div>
+
+        <div className="arcade-checklist">
+          {[
+            "Initializing birthday magic...",
+            "Collecting all the cuteness...",
+            "Preparing your special world...",
+            "Finalizing..."
+          ].map((message, index) => {
+            const thresholds = [25, 50, 75, 100];
+            const done = progress >= thresholds[index];
+            const active =
+              !done &&
+              (index === 0 ||
+                progress >= thresholds[index - 1]);
+
+            return (
+              <div
+                className={
+                  "arcade-check-item" +
+                  (done ? " done" : "") +
+                  (active ? " active" : "")
+                }
+                key={message}
+              >
+                <span className="arcade-check-arrow">
+                  {active ? "▶" : ""}
+                </span>
+                <span className="arcade-check-box">
+                  {done ? "✓" : ""}
+                </span>
+                <span>{message}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {progress >= 100 && (
+          <button
+            className="arcade-enter-button"
+            onClick={() => setScreen("bedroom")}
+          >
+            ▶ ENTER ROOM
+          </button>
+        )}
       </div>
 
-      <div className="boot-footer">
-        ✦ MADE WITH LOVE AND KAARTEHAN ✦
-      </div>
+      <footer className="arcade-footer">
+        ♡ A PRESSURE-FREE BIRTHDAY EXPERIENCE ♡
+      </footer>
     </div>
   </section>
 )}
