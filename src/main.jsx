@@ -21,7 +21,7 @@ function App() {
 
         return Math.min(current + 5, 100);
       });
-    }, 100);
+    }, 250);
 
     return () => clearInterval(interval);
   }, [screen]);
