@@ -1199,3 +1199,199 @@ button { font-family: inherit; }
 .gift-titlebar-name {
   color: #f5f4e8;
 }
+
+/* ===== CLICKABLE CAKE ===== */
+
+.cake-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  cursor: pointer;
+}
+
+.cake-svg-hotspot:hover,
+.cake-svg-hotspot:focus-visible {
+  fill: rgba(255, 230, 180, 0.08);
+  stroke: #ffe6ae;
+  outline: none;
+}
+
+/* ===== CAKE POPUP ===== */
+
+.cake-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(9, 15, 26, 0.83);
+  backdrop-filter: blur(3px);
+}
+
+.cake-popup {
+  position: relative;
+  width: min(480px, 94vw);
+  background: #eaf0e4;
+  border: 4px solid #304f4b;
+  box-shadow: 0 0 0 3px #8eafba, 8px 8px 0 #172e2b;
+  font-family: 'Press Start 2P', monospace;
+  color: #304f4b;
+}
+
+.cake-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #304f4b;
+  color: #fff4dd;
+  font-size: 11px;
+}
+
+.cake-titlebar button {
+  background: #8eafba;
+  border: 2px solid #fff4dd;
+  color: #304f4b;
+  padding: 6px 9px;
+  cursor: pointer;
+}
+
+.cake-content {
+  position: relative;
+  padding: 32px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cake-content h2 {
+  font-size: 14px;
+  line-height: 2;
+  margin: 0 0 24px;
+}
+
+.cake-content p {
+  font-size: 9px;
+  line-height: 2.2;
+  margin: 24px auto;
+  max-width: 340px;
+}
+
+/* Pixel-style birthday cake */
+
+.cake-art {
+  width: 210px;
+  height: 185px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cake-candles {
+  display: flex;
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.cake-candle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cake-flame {
+  color: #ffb84d;
+  font-size: 20px;
+  animation: cake-flicker 0.5s infinite alternate;
+  text-shadow: 0 0 12px #ffb84d;
+}
+
+.cake-wick {
+  width: 3px;
+  height: 5px;
+  background: #45343d;
+}
+
+.cake-stick {
+  width: 12px;
+  height: 42px;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffb5c8 0 7px,
+    #fff4dd 7px 14px
+  );
+  border: 3px solid #8c627c;
+}
+
+.cake-frosting {
+  width: 174px;
+  height: 24px;
+  background: #fff4dd;
+  border: 4px solid #8c627c;
+}
+
+.cake-layer {
+  display: grid;
+  place-items: center;
+  width: 180px;
+  height: 65px;
+  background: #e89bb4;
+  border: 5px solid #8c627c;
+  color: #fff4dd;
+  font-size: 15px;
+  box-shadow: inset 0 -15px #d982a2;
+}
+
+.cake-plate {
+  width: 210px;
+  height: 12px;
+  background: #9acbd3;
+  border: 3px solid #304f4b;
+}
+
+.cake-action {
+  padding: 14px 18px;
+  background: #304f4b;
+  border: 3px solid #8eafba;
+  color: #fff4dd;
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+.cake-action:hover {
+  background: #426d66;
+}
+
+/* Animations */
+
+@keyframes cake-flicker {
+  from { transform: scale(0.85) rotate(-8deg); }
+  to { transform: scale(1.15) rotate(8deg); }
+}
+
+.cake-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cake-confetti span {
+  position: absolute;
+  top: -20px;
+  width: 7px;
+  height: 12px;
+  animation: cake-fall 3s linear infinite;
+}
+
+@keyframes cake-fall {
+  from { transform: translateY(-20px) rotate(0); }
+  to { transform: translateY(500px) rotate(540deg); }
+}
