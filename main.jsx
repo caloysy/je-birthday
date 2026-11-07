@@ -252,20 +252,10 @@ height="55"
         </button>
       </div>
 
-      {/* LETTER CONTENT */}
+     
+{/* LETTER CONTENT */}
+<div className="gift-letter-message">
 
-    <div className="gift-letter">
-      <button
-        className="gift-close"
-        onClick={() => setGiftOpen(false)}
-        aria-label="Close letter"
-      >
-        ✕
-      </button>
-
-    
-
-      <div className="gift-letter-message">
 
   <p>Hi Love,</p>
 
