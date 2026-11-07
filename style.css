@@ -1411,3 +1411,169 @@ button { font-family: inherit; }
   stroke: #ffe3a2;
   outline: none;
 }
+.cake-countdown {
+  text-align: center;
+  margin: 18px 0;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.cake-countdown p {
+  font-size: 9px;
+  line-height: 1.9;
+  color: #31554f;
+}
+
+.cake-countdown-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 16px 0;
+}
+
+.cake-countdown-numbers span {
+  background: #31554f;
+  color: #fff1cf;
+  border: 2px solid #8db7a6;
+  padding: 12px 8px;
+  font-size: 11px;
+  box-shadow: 3px 3px 0 #a5bdb1;
+}
+
+.cake-countdown + button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== BIRTHDAY.EXE CAKE POPUP UPGRADE ===== */
+
+.cake-popup {
+  width: min(540px, 94vw);
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+
+.cake-content {
+  padding: 26px 22px 32px;
+}
+
+.cake-content h2 {
+  font-size: clamp(11px, 2.8vw, 16px);
+  margin-bottom: 18px;
+  color: #304f4b;
+  text-shadow: 2px 2px #c4d9cc;
+}
+
+/* Bigger pixel cake */
+.cake-art {
+  width: 300px;
+  height: 260px;
+  max-width: 100%;
+  margin: 12px auto 18px;
+  justify-content: flex-end;
+  filter: drop-shadow(5px 7px 0 #b9cfc3);
+}
+
+.cake-candles {
+  gap: 40px;
+}
+
+.cake-flame {
+  font-size: 29px;
+  text-shadow: 0 0 12px #ffc66e;
+}
+
+.cake-wick {
+  width: 4px;
+  height: 7px;
+}
+
+.cake-stick {
+  width: 17px;
+  height: 55px;
+  border-width: 3px;
+}
+
+.cake-frosting {
+  width: 245px;
+  height: 34px;
+  border-width: 5px;
+}
+
+.cake-layer {
+  width: 255px;
+  height: 95px;
+  border-width: 5px;
+  font-size: 21px;
+  box-shadow: inset 0 -22px #d982a2;
+}
+
+.cake-plate {
+  width: 300px;
+  height: 17px;
+  border-width: 4px;
+}
+
+/* Countdown */
+.cake-countdown {
+  margin: 10px auto 20px;
+}
+
+.cake-countdown p {
+  margin: 12px auto;
+  font-size: 9px;
+  line-height: 2;
+}
+
+.cake-countdown-numbers {
+  gap: 8px;
+  margin: 16px auto;
+  flex-wrap: wrap;
+}
+
+.cake-countdown-numbers span {
+  min-width: 65px;
+  padding: 15px 8px;
+  font-size: 12px;
+  border: 3px solid #8eafba;
+  box-shadow: 4px 4px 0 #b9cfc3;
+}
+
+/* Birthday button */
+.cake-action {
+  padding: 17px 24px;
+  font-size: 10px;
+  transition: background 0.2s ease;
+}
+
+.cake-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cake-action:disabled:hover {
+  background: #304f4b;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .cake-content {
+    padding: 20px 10px 24px;
+  }
+
+  .cake-art {
+    transform: scale(0.8);
+    transform-origin: center bottom;
+    margin-top: -30px;
+    margin-bottom: 0;
+  }
+
+  .cake-countdown-numbers {
+    gap: 5px;
+  }
+
+  .cake-countdown-numbers span {
+    min-width: 55px;
+    padding: 12px 5px;
+    font-size: 9px;
+  }
+}
