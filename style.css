@@ -1147,3 +1147,39 @@ button { font-family: inherit; }
     line-height: 2.1;
   }
 }
+
+/* LETTER.TXT - NEW COLOR THEME */
+
+.gift-letter {
+  background: #eaf0e4;
+  color: #2d4845;
+  border-color: #304f4b;
+  box-shadow:
+    0 0 0 3px #8eafba,
+    9px 9px 0 #172e2b;
+}
+
+.gift-titlebar {
+  background: #304f4b;
+  border-bottom-color: #8eafba;
+}
+
+.gift-titlebar-name {
+  color: #f5f4e8;
+}
+
+.gift-titlebar .gift-close {
+  background: #8eafba;
+  border-color: #eaf0e4;
+  color: #243e3c;
+  box-shadow: 3px 3px 0 #172e2b;
+}
+
+.gift-titlebar .gift-close:hover {
+  background: #b5d2d7;
+}
+
+.gift-letter-message {
+  background: #eaf0e4;
+  color: #2d4845;
+}
