@@ -40,24 +40,32 @@ const toggleMusic = async () => {
     return () => window.clearInterval(timer);
   }, [screen]);
 
+  useEffect(() => {
+  if (musicRef.current) {
+    musicRef.current.volume = volume;
+  }
+}, [volume]);
   return (
     <main className="app">
+
 
 <audio
   ref={musicRef}
   src="/birthday-song.mp3"
   preload="metadata"
+  onLoadedMetadata={(event) => {
+    event.currentTarget.volume = volume;
+  }}
   onTimeUpdate={(event) => {
     if (event.currentTarget.currentTime >= 137) {
       event.currentTarget.currentTime = 0;
       if (event.currentTarget.paused) {
         event.currentTarget.play().catch(console.error);
-        volume={volume}
-        onPlay={() => setMusicPlaying(true)}
-        onPause={() => setMusicPlaying(false)}
       }
     }
   }}
+  onPlay={() => setMusicPlaying(true)}
+  onPause={() => setMusicPlaying(false)}
   onEnded={() => setMusicPlaying(false)}
 />
 
