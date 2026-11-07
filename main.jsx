@@ -305,15 +305,15 @@ height="55"
     and I hope you're proud of yourself, too.
   </p>
 
-  <p>
-    Mahal na mahal kita
-  </p>
- </div>
+   <p>
+          Mahal na mahal kita
+        </p>
 
+      </div>
     </div>
   </div>
+)}
       
-)}    
 {/* INTERACTIVE WINDOW */}
 {screen === 'window' && (
   <section className="window-screen">
