@@ -538,15 +538,25 @@ button { font-family: inherit; }
 }
 
 /* Rain is clipped to the outdoor glass area */
+
+/* Rain stays inside the outdoor glass area */
 .rain-area {
   position: absolute;
-  left: 10%;
+  left: 10.5%;
   top: 17%;
-  width: 80%;
-  height: 68%;
+  width: 79%;
+  height: 64%;
   overflow: hidden;
   pointer-events: none;
+  z-index: 2;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
 }
+
 
 .rain-layer {
   position: absolute;
@@ -557,7 +567,7 @@ button { font-family: inherit; }
 
 /* Distant, lighter rain */
 .rain-back {
-  opacity: 0.22;
+  opacity: 0.12;
   background-image: repeating-linear-gradient(
     105deg,
     transparent 0 23px,
@@ -571,7 +581,7 @@ button { font-family: inherit; }
 
 /* Foreground rain */
 .rain-front {
-  opacity: 0.4;
+  opacity: 0.22;
   background-image: repeating-linear-gradient(
     105deg,
     transparent 0 35px,
