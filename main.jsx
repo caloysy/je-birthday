@@ -225,9 +225,35 @@ height="55"
         </section>
       )}
 
+
 {/* GIFT LETTER */}
 {giftOpen && (
   <div className="gift-overlay">
+    <div
+      className="gift-letter"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Birthday letter"
+    >
+
+      {/* RETRO COMPUTER TITLE BAR */}
+      <div className="gift-titlebar">
+        <span className="gift-titlebar-name">
+          ▤ Letter.txt
+        </span>
+
+        <button
+          type="button"
+          className="gift-close"
+          onClick={() => setGiftOpen(false)}
+          aria-label="Close letter"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* LETTER CONTENT */}
+
     <div className="gift-letter">
       <button
         className="gift-close"
