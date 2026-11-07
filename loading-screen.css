@@ -14,3 +14,12 @@
 .birthday-loading-enter:hover { background:#4aa9d6; transform:translateY(-2px); }
 .birthday-loading-enter:focus-visible { outline:3px solid white; outline-offset:4px; }
 @media(max-width:600px) { .birthday-loading {padding:18px 12px;} .birthday-loading-header {padding:12px 10px;} .birthday-loading-content {padding:23px 14px 22px;} .birthday-loading-content p {padding:13px 9px;} }
+/* Keep pixel-art backgrounds crisp */
+.loading-screen {
+  image-rendering: pixelated;
+}
+
+.loading-screen img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
