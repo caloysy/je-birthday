@@ -641,3 +641,24 @@ button { font-family: inherit; }
     animation: none;
   }
 }
+
+/* Softer pixel-art rainfall */
+.rain-layer {
+  position: absolute;
+  inset: -100% 0 0;
+  background-repeat: repeat;
+  pointer-events: none;
+  image-rendering: pixelated;
+  will-change: transform;
+}
+
+.rain-area {
+  position: absolute;
+  left: 10.5%;
+  top: 17%;
+  width: 79%;
+  height: 64%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
