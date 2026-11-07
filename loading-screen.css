@@ -27,7 +27,7 @@
 /* BLUE GAME WINDOW */
 .birthday-loading-panel {
   position: relative;
-  width: min(880px, 94vw);
+  width: min(600px, 90vw);
 
   background: rgba(19, 77, 115, 0.96);
   border: 4px solid #d2f2ff;
