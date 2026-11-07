@@ -316,10 +316,10 @@ height="74"
 {/* CLICKABLE COMPUTER */}
 <rect
   className="computer-svg-hotspot"
-    x="456"
-  y="214"
-  width="128"
-  height="84"
+  x="458"
+  y="218"
+  width="126"
+  height="80"
   rx="3"
   role="button"
   tabIndex={0}
