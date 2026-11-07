@@ -90,52 +90,40 @@ function App() {
         </section>
       )}
 
-      {/* INTERACTIVE WINDOW */}
-      {screen === 'window' && (
-        <section className="window-screen">
+     
+{/* INTERACTIVE WINDOW */}
+{screen === 'window' && (
+  <section className="window-screen">
+    <div className="window-scene-v3">
 
-          <div className="window-scene">
+      {/* New pixel-art background */}
+      <img
+        className="window-background"
+        src="/window-v3.png"
+        alt="Cozy wooden window overlooking a nighttime countryside"
+      />
 
-            <div className="window-sky">
-              <div className="window-moon" />
-              <div className="window-stars">✦ ✧ ✦</div>
+      {/* Animated moon */}
+      <div className="animated-moon" aria-hidden="true" />
 
-              <div className="birthday-sky-message">
-                BIG HAPPY BIRTHDAY ♡
-              </div>
-            </div>
+      {/* Animated rain — only outside the window */}
+      <div className="rain-area" aria-hidden="true">
+        <div className="rain-layer rain-back" />
+        <div className="rain-layer rain-front" />
+      </div>
 
-            <div className="window-mountains" />
+      {/* Clickable back button */}
+      <button
+        className="window-back-v3"
+        onClick={() => setScreen('room')}
+      >
+        ← BACK TO ROOM
+      </button>
 
-            <div className="window-hills" />
+    </div>
+  </section>
+)}
 
-            <div className="window-houses">
-              <div className="little-house house-one">
-                <div className="house-roof" />
-                <div className="house-light" />
-              </div>
-
-              <div className="little-house house-two">
-                <div className="house-roof" />
-                <div className="house-light" />
-              </div>
-            </div>
-
-            <div className="window-rain" />
-
-            <div className="window-frame-middle" />
-
-          </div>
-
-          <button
-            className="window-back"
-            onClick={() => setScreen('room')}
-          >
-            ← BACK TO ROOM
-          </button>
-
-        </section>
-      )}
 
     </main>
   );
