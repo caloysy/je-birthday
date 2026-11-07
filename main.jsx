@@ -10,6 +10,8 @@ function App() {
   const musicRef = useRef(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
+  const [giftOpen, setGiftOpen] = useState(false);
+  
 const toggleMusic = async () => {
   const audio = musicRef.current;
   if (!audio) return;
@@ -191,6 +193,24 @@ height="43"
   }}
 />
 
+  <rect
+  className="gift-svg-hotspot"
+  x="681"
+  y="382"
+  width="54"
+  height="63"
+  rx="3"
+  role="button"
+  tabIndex={0}
+  aria-label="Open birthday present"
+  onClick={() => setGiftOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setGiftOpen(true);
+    }
+  }}
+/>
 
 </svg>
 
