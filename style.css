@@ -474,3 +474,149 @@ button { font-family: inherit; }
     opacity: 1;
   }
 }
+
+/* ==========================================
+   WINDOW V3 — ANIMATED COUNTRYSIDE NIGHT
+========================================== */
+
+.window-screen {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  background: #172b25;
+}
+
+.window-scene-v3 {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #111629;
+}
+
+.window-background {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* Moon positioned inside the sky */
+.animated-moon {
+  position: absolute;
+  top: 24%;
+  left: 69%;
+  width: clamp(30px, 5vw, 85px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff0be;
+  box-shadow:
+    0 0 18px 6px #ffe7aa66,
+    0 0 55px 15px #ffe7aa33;
+  animation: moonGlow 5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes moonGlow {
+  from {
+    opacity: 0.75;
+    transform: scale(0.96);
+    box-shadow: 0 0 18px 6px #ffe7aa55;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.04);
+    box-shadow:
+      0 0 28px 10px #ffe7aa88,
+      0 0 65px 20px #ffe7aa33;
+  }
+}
+
+/* Rain is clipped to the outdoor glass area */
+.rain-area {
+  position: absolute;
+  left: 10%;
+  top: 17%;
+  width: 80%;
+  height: 68%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rain-layer {
+  position: absolute;
+  inset: -100% 0 0;
+  background-repeat: repeat;
+  will-change: transform;
+}
+
+/* Distant, lighter rain */
+.rain-back {
+  opacity: 0.22;
+  background-image: repeating-linear-gradient(
+    105deg,
+    transparent 0 23px,
+    #a4b8e4 24px,
+    transparent 25px,
+    transparent 52px
+  );
+  background-size: 100% 80px;
+  animation: rainFall 1.4s linear infinite;
+}
+
+/* Foreground rain */
+.rain-front {
+  opacity: 0.4;
+  background-image: repeating-linear-gradient(
+    105deg,
+    transparent 0 35px,
+    #d4def5 36px,
+    transparent 38px,
+    transparent 85px
+  );
+  background-size: 100% 110px;
+  animation: rainFall 0.8s linear infinite;
+}
+
+@keyframes rainFall {
+  from { transform: translateY(-60px); }
+  to { transform: translateY(60px); }
+}
+
+/* Back button */
+.window-back-v3 {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 10;
+  padding: 14px 18px;
+  border: 3px solid #f5e7ca;
+  border-radius: 7px;
+  background: #231d2de8;
+  color: #f5e7ca;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(8px, 1vw, 12px);
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.window-back-v3:hover {
+  background: #47354b;
+}
+
+.window-back-v3:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-moon,
+  .rain-layer {
+    animation: none;
+  }
+}
