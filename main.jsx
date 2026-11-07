@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
+import LoadingScreen from './LoadingScreen';
 
 function App() {
   const [screen, setScreen] = useState('start');
@@ -36,72 +37,11 @@ function App() {
       )}
 
       {screen === 'loading' && (
-        <section className="loading-screen" aria-label="Loading your birthday world">
-          <div className="forest-leaves forest-leaves-left" aria-hidden="true">🍃</div>
-          <div className="forest-leaves forest-leaves-right" aria-hidden="true">🍃</div>
-          <div className="forest-flowers forest-flowers-left" aria-hidden="true">✿ ❀ ✿</div>
-          <div className="forest-flowers forest-flowers-right" aria-hidden="true">❀ ✿ ❀</div>
-
-          <div className="forest-panel">
-            <div className="panel-cake" aria-hidden="true">🎂</div>
-            <header className="forest-header">
-              <span>🎮 BIRTHDAY.EXE</span>
-              <span>{progress === 100 ? 'READY!' : 'BOOTING...'}</span>
-            </header>
-
-            <div className="forest-body">
-              <h1>HELLO, LOVEEE!</h1>
-              <div className="forest-message">
-                <span aria-hidden="true">♥</span>
-                <p>Handa ka na bang ma-amaze sa gawa ng asawa mong malupet?</p>
-                <span aria-hidden="true">♥</span>
-              </div>
-
-              <div className="forest-progress-wrap">
-                <span className="progress-buddy buddy-left" aria-hidden="true">✿</span>
-                <div
-                  className="forest-progress-track"
-                  role="progressbar"
-                  aria-label="Loading birthday surprises"
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-valuenow={progress}
-                >
-                  <div className="forest-progress-fill" style={{ width: `${progress}%` }} />
-                </div>
-                <span className="progress-buddy buddy-right" aria-hidden="true">✦</span>
-              </div>
-              <div className="forest-progress-labels">
-                <span>{progress === 100 ? 'ALL SYSTEMS READY!' : 'LOADING BUSSENG...'}</span>
-                <span>{progress}%</span>
-              </div>
-
-              <div className="forest-checklist">
-                {checks.map((label, index) => {
-                  const complete = progress >= (index + 1) * 25;
-                  return (
-                    <div className={`forest-check ${complete ? 'complete' : ''}`} key={label}>
-                      <span className="check-square" aria-hidden="true">{complete ? '✓' : ' '}</span>
-                      <span>{label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {progress === 100 && (
-                <button className="enter-button" onClick={() => setScreen('room')}>
-                  ▶ ENTER ROOM
-                </button>
-              )}
-            </div>
-            <footer className="forest-footer">♡ MADE WITH LOVE AND KAARTEHAN ♡</footer>
-            <span className="panel-flower top-left" aria-hidden="true">✿</span>
-            <span className="panel-flower top-right" aria-hidden="true">✿</span>
-            <span className="panel-flower bottom-left" aria-hidden="true">✿</span>
-            <span className="panel-flower bottom-right" aria-hidden="true">✿</span>
-          </div>
-        </section>
-      )}
+  <LoadingScreen
+    progress={progress}
+    onEnter={() => setScreen('room')}
+  />
+)}
 
       {screen === 'room' && (
         <section className="room-screen">
