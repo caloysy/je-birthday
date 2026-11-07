@@ -174,10 +174,10 @@ const toggleMusic = async () => {
 
 <rect
   className="speaker-svg-hotspot"
-  x="425"
-y="283"
-width="25"
-height="39"
+ x="590"
+y="274"
+width="24"
+height="42"
   rx="3"
   role="button"
   tabIndex={0}
