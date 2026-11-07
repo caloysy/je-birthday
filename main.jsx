@@ -13,6 +13,33 @@ function App() {
   const [giftOpen, setGiftOpen] = useState(false);
   const [cakeOpen, setCakeOpen] = useState(false);
   const [candlesBlown, setCandlesBlown] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(() =>
+  Math.max(
+    0,
+    new Date('2026-11-16T00:00:00+08:00').getTime() - Date.now()
+  )
+);
+
+useEffect(() => {
+  const birthday = new Date('2026-11-16T00:00:00+08:00');
+
+  const updateCountdown = () => {
+    setTimeLeft(Math.max(0, birthday.getTime() - Date.now()));
+  };
+
+  updateCountdown();
+
+  const timer = setInterval(updateCountdown, 1000);
+
+  return () => clearInterval(timer);
+}, []);
+
+const birthdayUnlocked = timeLeft === 0;
+
+const days = Math.floor(timeLeft / 86400000);
+const hours = Math.floor((timeLeft / 3600000) % 24);
+const minutes = Math.floor((timeLeft / 60000) % 60);
+const seconds = Math.floor((timeLeft / 1000) % 60);
   
 const toggleMusic = async () => {
   const audio = musicRef.current;
@@ -339,7 +366,6 @@ height="74"
           type="button"
           onClick={() => {
             setCakeOpen(false);
-            setCandlesBlown(false);
           }}
           aria-label="Close birthday cake"
         >
@@ -406,11 +432,27 @@ height="74"
           </>
         ) : (
           <>
-            <p>Close your eyes and make a wish...</p>
+           {!birthdayUnlocked ? (
+  <div className="cake-countdown">
+    <p>♡ YOUR BIRTHDAY BEGINS IN ♡</p>
+
+    <div className="cake-countdown-numbers">
+      <span>{days}d</span>
+      <span>{String(hours).padStart(2, '0')}h</span>
+      <span>{String(minutes).padStart(2, '0')}m</span>
+      <span>{String(seconds).padStart(2, '0')}s</span>
+    </div>
+
+    <p>Wait until midnight, birthday boy! ♡</p>
+  </div>
+) : (
+  <p>IT'S YOUR BIRTHDAY! MAKE A WISH! ♡</p>
+)}
 
             <button
               className="cake-action"
               onClick={() => setCandlesBlown(true)}
+              disabled={!birthdayUnlocked}
             >
               ✦ BLOW CANDLES ✦
             </button>
