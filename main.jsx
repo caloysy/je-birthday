@@ -103,20 +103,13 @@ const toggleMusic = async () => {
         <section className="room-screen">
           <div className="room-wrap">
 
-<div className="music-widget">
-  <div className="music-widget-info">
-    <span className="music-note">♫</span>
-    <div>
-      <div className="music-widget-title">
-        {musicPlaying ? '♪ NOW PLAYING' : '♫ MUSIC PAUSED'}
-      </div>
-      <div className="music-widget-subtitle">
-        Birthday Soundtrack ♡
-      </div>
-    </div>
+{/* COMPACT MUSIC PLAYER */}
+<div className="mini-music-player">
+  <div className="mini-music-status">
+    ♫ {musicPlaying ? 'NOW PLAYING' : 'PAUSED'}
   </div>
 
-  <div className="music-widget-controls">
+  <div className="mini-music-controls">
     <button
       type="button"
       onClick={toggleMusic}
@@ -125,7 +118,7 @@ const toggleMusic = async () => {
       {musicPlaying ? 'Ⅱ' : '▶'}
     </button>
 
-    <span aria-hidden="true">♫</span>
+    <span>♫</span>
 
     <input
       type="range"
@@ -138,13 +131,8 @@ const toggleMusic = async () => {
       }
       aria-label="Music volume"
     />
-
-    <span className="music-volume">
-      {Math.round(volume * 100)}%
-    </span>
   </div>
 </div>
-
             <div className="room-heading">
               <h1>✦ BIRTHDAY ROOM ✦</h1>
               <span>click objects to explore</span>
