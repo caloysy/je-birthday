@@ -852,3 +852,21 @@ button { font-family: inherit; }
 .window-svg-hotspot {
   pointer-events: all;
 }
+/* Speaker: invisible until hovered */
+.speaker-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  cursor: pointer;
+  pointer-events: all;
+  transition: stroke 0.2s ease;
+}
+
+/* Show outline on hover */
+.speaker-svg-hotspot:hover,
+.speaker-svg-hotspot:focus-visible {
+  fill: rgba(255, 220, 150, 0.08);
+  stroke: #ffe6a3;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px #ffd580);
+}
