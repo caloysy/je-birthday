@@ -195,10 +195,10 @@ height="43"
 
   <rect
   className="gift-svg-hotspot"
-  x="681"
-  y="382"
-  width="54"
-  height="63"
+  x="687"
+y="388"
+width="51"
+height="57"
   rx="3"
   role="button"
   tabIndex={0}
