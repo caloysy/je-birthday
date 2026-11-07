@@ -4,6 +4,56 @@ import { createRoot } from 'react-dom/client';
 import './style.css';
 import LoadingScreen from './LoadingScreen';
 
+const playedGames = [
+  { name: 'Minecraft', image: 'minecraft.jpg' },
+  { name: 'Mobile Legends', image: 'mobile-legends.jpg' },
+  { name: 'Valorant', image: 'valorant.jpg' },
+  { name: 'Overcooked', image: 'overcooked.jpg' },
+  { name: 'PEAK', image: 'peak.jpg' },
+  { name: 'BoomBanana', image: 'boombanana.jpg' },
+  { name: 'Supermarket Together', image: 'supermarket-together.jpg' },
+  { name: 'Roblox', image: 'roblox.jpg' },
+  { name: 'R.E.P.O.', image: 'repo.jpg' }
+];
+
+const wishlistGames = [
+  { name: 'It Takes Two', image: 'it-takes-two.jpg' },
+  { name: 'Carry The Glass', image: 'carry-the-glass.jpg' },
+  { name: 'PICO PARK', image: 'pico-park.jpg' },
+  { name: 'Lethal Company', image: 'lethal-company.jpg' },
+  { name: 'Chained Together', image: 'chained-together.jpg' },
+  { name: 'RV There Yet?', image: 'rv-there-yet.jpg' },
+  { name: 'Content Warning', image: 'content-warning.jpg' }
+];
+
+function GameCollection({ games, status }) {
+  return (
+    <div className="games-grid">
+      {games.map((game) => (
+        <div className="games-card" key={game.name}>
+          <div className="games-cover">
+            <img
+              src={`/games/${game.image}`}
+              alt={`${game.name} cover`}
+              loading="lazy"
+              onError={(event) => {
+                event.currentTarget.style.display = 'none';
+              }}
+            />
+            <span className="games-cover-placeholder">♫ GAME ♫</span>
+          </div>
+          <div className="games-card-info">
+            <span className="games-card-name">{game.name}</span>
+            <span className={`games-status ${status}`}>
+              {status === 'played' ? '✓ PLAYED' : '♡ TO PLAY'}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function App() {
   const [screen, setScreen] = useState('start');
   const [progress, setProgress] = useState(0);
@@ -12,6 +62,7 @@ function App() {
   const [volume, setVolume] = useState(0.5);
   const [giftOpen, setGiftOpen] = useState(false);
   const [cakeOpen, setCakeOpen] = useState(false);
+  const [gamesOpen, setGamesOpen] = useState(false);
   const [candlesBlown, setCandlesBlown] = useState(false);
   const [timeLeft, setTimeLeft] = useState(() =>
   Math.max(
@@ -262,6 +313,26 @@ height="74"
   }}
 />
 
+{/* CLICKABLE COMPUTER */}
+<rect
+  className="computer-svg-hotspot"
+  x="360"
+  y="260"
+  width="110"
+  height="100"
+  rx="3"
+  role="button"
+  tabIndex={0}
+  aria-label="Open our game collection"
+  onClick={() => setGamesOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setGamesOpen(true);
+    }
+  }}
+/>
+
 </svg>
 
             </div>
@@ -463,7 +534,74 @@ height="74"
   </div>
 )}
 
-      
+ 
+{/* OUR GAMES COMPUTER POPUP */}
+{gamesOpen && (
+  <div className="games-overlay">
+    <div
+      className="games-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Our game collection"
+    >
+      <div className="games-titlebar">
+        <span>▣ OurGames.exe</span>
+        <button
+          type="button"
+          onClick={() => setGamesOpen(false)}
+          aria-label="Close game collection"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="games-content">
+        <div className="games-intro">
+          <span className="games-intro-icon">✦ ♡ ✦</span>
+          <h2>OUR LITTLE GAME LIBRARY</h2>
+          <p>A collection of adventures, past and future.</p>
+        </div>
+
+        <section className="games-section">
+          <div className="games-section-heading">
+            <h3>✓ GAMES WE'VE PLAYED</h3>
+            <span>9 GAMES</span>
+          </div>
+          <GameCollection
+            games={playedGames}
+            status="played"
+          />
+        </section>
+
+        <section className="games-section">
+          <div className="games-section-heading">
+            <h3>♡ GAMES WE SHOULD PLAY</h3>
+            <span>7 GAMES</span>
+          </div>
+          <GameCollection
+            games={wishlistGames}
+            status="wishlist"
+          />
+        </section>
+
+        <div className="games-footer">
+          <span>✦ MORE ADVENTURES TO COME ✦</span>
+          <p>
+            Some games we've finished, some we haven't started.
+            But my favorite part will always be playing them
+            with you. ♡
+          </p>
+        </div>
+      </div>
+
+      <div className="games-bottom-bar">
+        <span>♡ OURGAMES.EXE</span>
+        <span>16 GAMES COLLECTED</span>
+      </div>
+    </div>
+  </div>
+)}
+     
 {/* INTERACTIVE WINDOW */}
 {screen === 'window' && (
   <section className="window-screen">
