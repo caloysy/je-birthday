@@ -284,8 +284,10 @@ height="55"
   <p>
     Mahal na mahal kita
   </p>
+ </div>
 
-</div>
+    </div>
+  </div>
       
 )}    
 {/* INTERACTIVE WINDOW */}
