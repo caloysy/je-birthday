@@ -676,3 +676,21 @@ button { font-family: inherit; }
   stroke-width: 3;
   outline: none;
 }
+
+/* Clickable bedroom speaker */
+.speaker-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.speaker-svg-hotspot:hover,
+.speaker-svg-hotspot:focus-visible {
+  fill: rgba(255, 223, 181, 0.1);
+  stroke: #ffe3ac;
+  stroke-dasharray: 4 3;
+  outline: none;
+}
