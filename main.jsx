@@ -52,7 +52,7 @@ function App() {
             </div>
             <div className="room-image">
               <img
-                src="/bedroom.png"
+                src="/bedroom-v2.png"
                 alt="Cozy pixel-art birthday bedroom"
                 onError={(event) => {
                   event.currentTarget.style.display = 'none';
