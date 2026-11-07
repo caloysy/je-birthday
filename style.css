@@ -1011,3 +1011,18 @@ button { font-family: inherit; }
     line-height: 1.8;
   }
 }
+.gift-letter {
+  padding-top: 48px;
+  padding-bottom: 65px;
+}
+
+.gift-letter-message p:first-child {
+  font-style: italic;
+  font-size: 19px;
+  margin-bottom: 28px;
+}
+
+.gift-letter-message p:last-child {
+  font-style: italic;
+  margin-top: 30px;
+}
