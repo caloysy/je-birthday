@@ -214,14 +214,15 @@ height="55"
   }}
 />
 
+
 {/* CLICKABLE BIRTHDAY CAKE */}
 <rect
   className="cake-svg-hotspot"
-  x="595"
-  y="378"
-  width="90"
-  height="74"
-  rx="4"
+  x="597"
+  y="375"
+  width="85"
+  height="78"
+  rx="3"
   role="button"
   tabIndex={0}
   aria-label="Blow out birthday candles"
@@ -232,6 +233,8 @@ height="55"
       setCakeOpen(true);
     }
   }}
+/>
+
 />
 
 </svg>
