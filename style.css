@@ -765,3 +765,54 @@ button { font-family: inherit; }
   font-size: 8px;
   text-align: right;
 }
+/* COMPACT FLOATING MUSIC PLAYER */
+
+.mini-music-player {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 180px;
+  padding: 10px 12px;
+  background: #263a33;
+  border: 1px solid #e8d5aa;
+  border-radius: 6px;
+  color: #f9e7c3;
+  font-family: 'Press Start 2P', monospace;
+  z-index: 1000;
+  box-shadow: 0 4px 0 #10221c;
+}
+
+.mini-music-status {
+  font-size: 10px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.mini-music-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mini-music-controls button {
+  background: #425b4b;
+  border: 1px solid #e8d5aa;
+  border-radius: 3px;
+  color: #f9e7c3;
+  padding: 5px 7px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.mini-music-controls span {
+  font-size: 10px;
+}
+
+.mini-music-controls input {
+  flex: 1;
+  width: 65px;
+  min-width: 0;
+  accent-color: #f4c987;
+  cursor: pointer;
+}
