@@ -210,12 +210,13 @@ button { font-family: inherit; }
 
 /* Invisible clickable area over the bedroom window */
 
+
 .window-hotspot {
   position: absolute;
-  left: 6.5%;
-  top: 21%;
-  width: 18%;
-  height: 38%;
+  left: 11.5%;
+  top: 28%;
+  width: 18.5%;
+  height: 30%;
   padding: 0;
   border: none;
   background: transparent;
@@ -224,13 +225,14 @@ button { font-family: inherit; }
 }
 
 .window-hotspot:hover {
-  background: rgba(255, 239, 192, 0.05);
-  outline: 2px solid rgba(255, 239, 192, 0.5);
+  background: rgba(255, 239, 192, 0.06);
+  outline: 2px solid rgba(255, 239, 192, 0.65);
 }
 
 .window-hotspot:focus-visible {
   outline: 2px solid #fff0c8;
 }
+
 
 
 /* Window screen */
