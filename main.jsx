@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import LoadingScreen from './LoadingScreen';
@@ -7,6 +7,26 @@ import LoadingScreen from './LoadingScreen';
 function App() {
   const [screen, setScreen] = useState('start');
   const [progress, setProgress] = useState(0);
+  const musicRef = useRef(null);
+  const [musicPlaying, setMusicPlaying] = useState(false);
+
+const toggleMusic = async () => {
+  const audio = musicRef.current;
+  if (!audio) return;
+
+  if (!audio.paused) {
+    audio.pause();
+    setMusicPlaying(false);
+  } else {
+    try {
+      if (audio.currentTime >= 137) audio.currentTime = 0;
+      await audio.play();
+      setMusicPlaying(true);
+    } catch (error) {
+      console.error('Music could not start:', error);
+    }
+  }
+};
 
   useEffect(() => {
     if (screen !== 'loading') return;
@@ -22,6 +42,21 @@ function App() {
 
   return (
     <main className="app">
+
+<audio
+  ref={musicRef}
+  src="/birthday-song.mp3"
+  preload="metadata"
+  onTimeUpdate={(event) => {
+    if (event.currentTarget.currentTime >= 137) {
+      event.currentTarget.currentTime = 0;
+      if (event.currentTarget.paused) {
+        event.currentTarget.play().catch(console.error);
+      }
+    }
+  }}
+  onEnded={() => setMusicPlaying(false)}
+/>
 
       {/* OPENING SCREEN */}
       {screen === 'start' && (
@@ -94,6 +129,25 @@ function App() {
       }
     }}
   />
+  
+<rect
+  className="speaker-svg-hotspot"
+  x="535"
+  y="248"
+  width="30"
+  height="65"
+  role="button"
+  tabIndex={0}
+  aria-label={musicPlaying ? 'Pause music' : 'Play music'}
+  onClick={toggleMusic}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleMusic();
+    }
+  }}
+/>
+
 </svg>
 
             </div>
