@@ -242,24 +242,51 @@ height="55"
       <h2>FOR YOU ♡</h2>
 
       <div className="gift-letter-message">
-        <p>Happy Birthday, mahal!</p>
 
-        <p>
-          Your birthday letter goes here.
-          You can write as much as you want!
-        </p>
+  <p>Hi Love,</p>
 
-        <p>
-          I hope today reminds you how special
-          you are. ♡
-        </p>
-      </div>
+  <p>
+    Ayos ba? HEHE. Happy Birthday!
+  </p>
 
-      <div className="gift-letter-footer">
-        WITH LOVE ♡
-      </div>
-    </div>
-  </div>
+  <p>
+    I love you so much. Thank you for bringing so much happiness
+    into my life and for always supporting me in everything I do.
+    I never thought I'd enjoy someone's presence as much as I
+    enjoy yours. You make even the simplest moments something
+    I look forward to.
+  </p>
+
+  <p>
+    But more than anything, I hope you know how much you deserve
+    all the good things life has to offer. Sana matupad mo lahat
+    ng pangarap mo sa buhay, even the ones I don't know about yet.
+    I hope you never lose the things that make you <em>you</em>,
+    and that you continue doing what makes you happy. I hope this
+    year brings you more reasons to smile, more games to enjoy,
+    more achievements to unlock (HEHE), and more memories to
+    look back on.
+  </p>
+
+  <p>
+    I'm so excited for all the things waiting for you in the
+    future, and I hope I get to be there to witness them.
+    I want to experience life with you, so please celebrate
+    many, many more birthdays and wait for me so I can finally
+    celebrate them with you, too.
+  </p>
+
+  <p>
+    I'm always rooting for you, bebe. I'm so proud of you,
+    and I hope you're proud of yourself, too.
+  </p>
+
+  <p>
+    Mahal na mahal kita
+  </p>
+
+</div>
+      
 )}    
 {/* INTERACTIVE WINDOW */}
 {screen === 'window' && (
