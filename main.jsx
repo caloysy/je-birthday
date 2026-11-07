@@ -33,7 +33,7 @@ function GameCollection({ games, status }) {
         <div className="games-card" key={game.name}>
           <div className="games-cover">
             <img
-              src={`/games/${game.image}`}
+              src={`/${game.image}`}
               alt={`${game.name} cover`}
               loading="lazy"
               onError={(event) => {
