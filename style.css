@@ -537,78 +537,6 @@ button { font-family: inherit; }
   }
 }
 
-/* Rain is clipped to the outdoor glass area */
-
-/* Rain stays inside the outdoor glass area */
-.rain-area {
-  position: absolute;
-  left: 10.5%;
-  top: 17%;
-  width: 79%;
-  height: 64%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 2;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-}
-
-
-.rain-layer {
-  position: absolute;
-  inset: -100% 0 0;
-  background-repeat: repeat;
-  will-change: transform;
-}
-
-/* Distant, lighter rain */
-
-/* Soft, distant drizzle */
-.rain-back {
-  opacity: 0.24;
-  background-image:
-    repeating-linear-gradient(
-      102deg,
-      transparent 0 37px,
-      #a9bce1 38px,
-      transparent 39px,
-      transparent 93px
-    );
-  background-size: 173px 120px;
-  animation: gentleRain 1.8s linear infinite;
-}
-
-/* Slightly brighter foreground droplets */
-.rain-front {
-  opacity: 0.3;
-  background-image:
-    repeating-linear-gradient(
-      102deg,
-      transparent 0 67px,
-      #d0d9ee 68px,
-      transparent 69px,
-      transparent 147px
-    );
-  background-size: 227px 165px;
-  animation: gentleRain 1.2s linear infinite;
-}
-
-/* Gentle downward movement */
-@keyframes gentleRain {
-  from {
-    transform: translateY(-40px);
-  }
-
-  to {
-    transform: translateY(80px);
-  }
-}
-
-
 /* Back button */
 .window-back-v3 {
   position: absolute;
@@ -661,4 +589,48 @@ button { font-family: inherit; }
   overflow: hidden;
   pointer-events: none;
   z-index: 2;
+}
+
+/* Individual pixel-art raindrops */
+.rain-area {
+  position: absolute;
+  left: 10.5%;
+  top: 17%;
+  width: 79%;
+  height: 64%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pixel-raindrop {
+  position: absolute;
+  width: 2px;
+  height: 11px;
+  background: #b5c8e9;
+  transform: rotate(12deg);
+  image-rendering: pixelated;
+  animation: pixelRainFall linear infinite;
+}
+
+@keyframes pixelRainFall {
+  0% {
+    transform: translateY(-20px) rotate(12deg);
+  }
+  100% {
+    transform: translateY(520px) rotate(12deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .pixel-raindrop {
+    width: 1px;
+    height: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-raindrop {
+    animation: none;
+  }
 }
