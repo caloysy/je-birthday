@@ -870,3 +870,18 @@ button { font-family: inherit; }
   stroke-width: 2;
   filter: drop-shadow(0 0 4px #ffd580);
 }
+.gift-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  cursor: pointer;
+  pointer-events: all;
+  transition: stroke 0.2s ease;
+}
+
+.gift-svg-hotspot:hover,
+.gift-svg-hotspot:focus-visible {
+  fill: rgba(255, 220, 150, 0.08);
+  stroke: #ffe6a3;
+  filter: drop-shadow(0 0 4px #ffd580);
+}
