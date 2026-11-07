@@ -5,25 +5,25 @@ import './style.css';
 import LoadingScreen from './LoadingScreen';
 
 const playedGames = [
-  { name: 'Minecraft', image: 'minecraft.jpg' },
-  { name: 'Mobile Legends', image: 'mobile-legends.jpg' },
-  { name: 'Valorant', image: 'valorant.jpg' },
-  { name: 'Overcooked', image: 'overcooked.jpg' },
-  { name: 'PEAK', image: 'peak.jpg' },
-  { name: 'BoomBanana', image: 'boombanana.jpg' },
-  { name: 'Supermarket Together', image: 'supermarket-together.jpg' },
-  { name: 'Roblox', image: 'roblox.jpg' },
-  { name: 'R.E.P.O.', image: 'repo.jpg' }
+  { name: 'Minecraft', image: 'minecraft.png' },
+  { name: 'Mobile Legends', image: 'mobile-legends.png' },
+  { name: 'Valorant', image: 'valorant.png' },
+  { name: 'Overcooked', image: 'overcooked.png' },
+  { name: 'PEAK', image: 'peak.png' },
+  { name: 'BoomBanana', image: 'boombanana.png' },
+  { name: 'Supermarket Together', image: 'supermarket-together.png' },
+  { name: 'Roblox', image: 'roblox.png' },
+  { name: 'R.E.P.O.', image: 'repo.png' }
 ];
 
 const wishlistGames = [
-  { name: 'It Takes Two', image: 'it-takes-two.jpg' },
-  { name: 'Carry The Glass', image: 'carry-the-glass.jpg' },
-  { name: 'PICO PARK', image: 'pico-park.jpg' },
-  { name: 'Lethal Company', image: 'lethal-company.jpg' },
-  { name: 'Chained Together', image: 'chained-together.jpg' },
-  { name: 'RV There Yet?', image: 'rv-there-yet.jpg' },
-  { name: 'Content Warning', image: 'content-warning.jpg' }
+  { name: 'It Takes Two', image: 'it-takes-two.png' },
+  { name: 'Carry The Glass', image: 'carry-the-glass.png' },
+  { name: 'PICO PARK', image: 'pico-park.png' },
+  { name: 'Lethal Company', image: 'lethal-company.png' },
+  { name: 'Chained Together', image: 'chained-together.png' },
+  { name: 'RV There Yet?', image: 'rv-there-yet.png' },
+  { name: 'Content Warning', image: 'content-warning.png' }
 ];
 
 function GameCollection({ games, status }) {
