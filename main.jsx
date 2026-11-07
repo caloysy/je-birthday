@@ -14,7 +14,7 @@ function App() {
   const checks = ['Tumatae...', 'Nangungulangot...', 'Namimiss ka...', 'ETO NA...'];
   return <main className="app">
     {screen === 'start' && <section className="opening-screen" aria-label="Birthday.exe opening artwork">
-      <img className="opening-art" src="/opening-screen.png" alt="Pixel art birthday game opening with two people and Nailong the cat" />
+      <img className="opening-art" src="/opening-screen-v2.png" alt="Pixel art birthday game opening with two people and Nailong the cat" />
       <button className="start-hotspot" onClick={() => setScreen('loading')} aria-label="Press start to begin" title="Press Start" />
     </section>}
     {screen === 'loading' && <section className="loading-screen">
