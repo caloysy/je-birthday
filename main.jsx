@@ -203,7 +203,7 @@ height="55"
   role="button"
   tabIndex={0}
   aria-label="Open birthday present"
-  onClick={() => setGiftOpen(true)}
+ onClick={() => setGiftOpen(true)}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -225,7 +225,42 @@ height="55"
         </section>
       )}
 
-     
+{/* GIFT LETTER */}
+{giftOpen && (
+  <div className="gift-overlay">
+    <div className="gift-letter">
+      <button
+        className="gift-close"
+        onClick={() => setGiftOpen(false)}
+        aria-label="Close letter"
+      >
+        ✕
+      </button>
+
+      <div className="gift-letter-icon">💌</div>
+
+      <h2>FOR YOU ♡</h2>
+
+      <div className="gift-letter-message">
+        <p>Happy Birthday, mahal!</p>
+
+        <p>
+          Your birthday letter goes here.
+          You can write as much as you want!
+        </p>
+
+        <p>
+          I hope today reminds you how special
+          you are. ♡
+        </p>
+      </div>
+
+      <div className="gift-letter-footer">
+        WITH LOVE ♡
+      </div>
+    </div>
+  </div>
+)}    
 {/* INTERACTIVE WINDOW */}
 {screen === 'window' && (
   <section className="window-screen">
