@@ -1898,3 +1898,6 @@ button { font-family: inherit; }
     transition: none;
   }
 }
+.games-cover img {
+  image-rendering: pixelated;
+}
