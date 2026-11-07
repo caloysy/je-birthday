@@ -694,3 +694,74 @@ button { font-family: inherit; }
   stroke-dasharray: 4 3;
   outline: none;
 }
+
+/* BIRTHDAY.EXE - Music Widget */
+
+.music-widget {
+  width: min(420px, 92vw);
+  margin: 18px auto 25px;
+  padding: 13px 17px;
+  background: #24352f;
+  border: 2px solid #d6c7a2;
+  border-radius: 9px;
+  box-shadow: 0 5px 0 #101e19;
+  color: #fff0d2;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.music-widget-info {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.music-note {
+  font-size: 23px;
+  color: #ffcf8a;
+}
+
+.music-widget-title {
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.music-widget-subtitle {
+  margin-top: 5px;
+  font-size: 7px;
+  color: #c5bba6;
+}
+
+.music-widget-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.music-widget-controls button {
+  padding: 8px 11px;
+  border: 1px solid #e8d4aa;
+  border-radius: 5px;
+  background: #42584a;
+  color: #fff0d2;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+
+.music-widget-controls button:hover {
+  background: #607766;
+}
+
+.music-widget-controls input[type="range"] {
+  flex: 1;
+  min-width: 0;
+  accent-color: #f6c783;
+  cursor: pointer;
+}
+
+.music-volume {
+  min-width: 35px;
+  font-size: 8px;
+  text-align: right;
+}
