@@ -108,21 +108,24 @@ function App() {
 
      
 {/* Individual animated raindrops */}
+
 <div className="rain-area" aria-hidden="true">
-  {Array.from({ length: 85 }, (_, i) => (
+  {Array.from({ length: 250 }, (_, i) => (
     <span
       key={i}
       className="pixel-raindrop"
       style={{
         left: `${(i * 37.7) % 100}%`,
         top: `${(i * 23.3) % 100}%`,
-        animationDelay: `${-((i * 0.37) % 2.5)}s`,
-        animationDuration: `${0.9 + (i % 5) * 0.18}s`,
-        opacity: 0.18 + (i % 4) * 0.08
+        height: `${6 + (i % 5) * 3}px`,
+        opacity: 0.18 + (i % 5) * 0.08,
+        animationDuration: `${0.8 + (i % 7) * 0.16}s`,
+        animationDelay: `${-((i * 0.37) % 2.5)}s`
       }}
     />
   ))}
 </div>
+
 
 
       {/* Clickable back button */}
