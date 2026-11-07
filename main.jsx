@@ -11,7 +11,6 @@ function App() {
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [giftOpen, setGiftOpen] = useState(false);
-  const [giftOpen, setGiftOpen] = useState(false);
   const [cakeOpen, setCakeOpen] = useState(false);
   const [candlesBlown, setCandlesBlown] = useState(false);
   
