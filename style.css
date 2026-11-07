@@ -566,37 +566,48 @@ button { font-family: inherit; }
 }
 
 /* Distant, lighter rain */
+
+/* Soft, distant drizzle */
 .rain-back {
-  opacity: 0.12;
-  background-image: repeating-linear-gradient(
-    105deg,
-    transparent 0 23px,
-    #a4b8e4 24px,
-    transparent 25px,
-    transparent 52px
-  );
-  background-size: 100% 80px;
-  animation: rainFall 1.4s linear infinite;
+  opacity: 0.24;
+  background-image:
+    repeating-linear-gradient(
+      102deg,
+      transparent 0 37px,
+      #a9bce1 38px,
+      transparent 39px,
+      transparent 93px
+    );
+  background-size: 173px 120px;
+  animation: gentleRain 1.8s linear infinite;
 }
 
-/* Foreground rain */
+/* Slightly brighter foreground droplets */
 .rain-front {
-  opacity: 0.22;
-  background-image: repeating-linear-gradient(
-    105deg,
-    transparent 0 35px,
-    #d4def5 36px,
-    transparent 38px,
-    transparent 85px
-  );
-  background-size: 100% 110px;
-  animation: rainFall 0.8s linear infinite;
+  opacity: 0.3;
+  background-image:
+    repeating-linear-gradient(
+      102deg,
+      transparent 0 67px,
+      #d0d9ee 68px,
+      transparent 69px,
+      transparent 147px
+    );
+  background-size: 227px 165px;
+  animation: gentleRain 1.2s linear infinite;
 }
 
-@keyframes rainFall {
-  from { transform: translateY(-60px); }
-  to { transform: translateY(60px); }
+/* Gentle downward movement */
+@keyframes gentleRain {
+  from {
+    transform: translateY(-40px);
+  }
+
+  to {
+    transform: translateY(80px);
+  }
 }
+
 
 /* Back button */
 .window-back-v3 {
