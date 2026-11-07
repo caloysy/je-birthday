@@ -11,6 +11,9 @@ function App() {
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [giftOpen, setGiftOpen] = useState(false);
+  const [giftOpen, setGiftOpen] = useState(false);
+  const [cakeOpen, setCakeOpen] = useState(false);
+  const [candlesBlown, setCandlesBlown] = useState(false);
   
 const toggleMusic = async () => {
   const audio = musicRef.current;
@@ -212,6 +215,26 @@ height="55"
   }}
 />
 
+{/* CLICKABLE BIRTHDAY CAKE */}
+<rect
+  className="cake-svg-hotspot"
+  x="595"
+  y="378"
+  width="90"
+  height="74"
+  rx="4"
+  role="button"
+  tabIndex={0}
+  aria-label="Blow out birthday candles"
+  onClick={() => setCakeOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setCakeOpen(true);
+    }
+  }}
+/>
+
 </svg>
 
             </div>
@@ -303,6 +326,101 @@ height="55"
     </div>
   </div>
 )}
+
+
+{/* BIRTHDAY CAKE POPUP */}
+{cakeOpen && (
+  <div className="cake-overlay">
+    <div className="cake-popup">
+
+      <div className="cake-titlebar">
+        <span>🎂 Birthday.exe</span>
+        <button
+          type="button"
+          onClick={() => {
+            setCakeOpen(false);
+            setCandlesBlown(false);
+          }}
+          aria-label="Close birthday cake"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="cake-content">
+        <h2>
+          {candlesBlown
+            ? 'HAPPY BIRTHDAY, LOVE!'
+            : 'MAKE A WISH! ♡'}
+        </h2>
+
+        <div className="cake-art">
+          <div className="cake-candles">
+            {[0, 1, 2].map((i) => (
+              <div className="cake-candle" key={i}>
+                {!candlesBlown && (
+                  <span className="cake-flame">✦</span>
+                )}
+                <span className="cake-wick" />
+                <span className="cake-stick" />
+              </div>
+            ))}
+          </div>
+
+          <div className="cake-frosting" />
+          <div className="cake-layer">♡ ♡ ♡</div>
+          <div className="cake-plate" />
+        </div>
+
+        {candlesBlown ? (
+          <>
+            <div className="cake-confetti" aria-hidden="true">
+              {Array.from({ length: 35 }, (_, i) => (
+                <span
+                  key={i}
+                  style={{
+                    left: `${(i * 37) % 100}%`,
+                    animationDelay: `${(i % 10) * -0.2}s`,
+                    background: [
+                      '#f4a8bc',
+                      '#ffdd89',
+                      '#9acbd3',
+                      '#b9d6a4'
+                    ][i % 4]
+                  }}
+                />
+              ))}
+            </div>
+
+            <p>
+              Another year of you making the world
+              a little brighter. ♡
+            </p>
+
+            <button
+              className="cake-action"
+              onClick={() => setCandlesBlown(false)}
+            >
+              ↻ MAKE ANOTHER WISH
+            </button>
+          </>
+        ) : (
+          <>
+            <p>Close your eyes and make a wish...</p>
+
+            <button
+              className="cake-action"
+              onClick={() => setCandlesBlown(true)}
+            >
+              ✦ BLOW CANDLES ✦
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
       
 {/* INTERACTIVE WINDOW */}
 {screen === 'window' && (
