@@ -218,10 +218,10 @@ height="55"
 {/* CLICKABLE BIRTHDAY CAKE */}
 <rect
   className="cake-svg-hotspot"
- x="598"
-y="379"
-width="82"
-height="69"
+x="600"
+y="375"
+width="78"
+height="74"
   rx="3"
   role="button"
   tabIndex={0}
