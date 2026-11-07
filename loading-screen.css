@@ -1,25 +1,195 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-.birthday-loading, .birthday-loading * { box-sizing: border-box; }
-.birthday-loading { min-height:100dvh; width:100%; display:grid; place-items:center; padding:28px 16px; background:#72cbe9 url('/loading-landscape.png') center center / cover no-repeat; font-family:'Press Start 2P',monospace; color:#effaff; }
-.birthday-loading-panel { position:relative; width:min(720px,94vw); background:#134d73f2; border:4px solid #d2f2ff; outline:4px solid #21658b; border-radius:13px; box-shadow:0 12px 0 #15445d66,0 20px 45px #16445c44; }
-.birthday-loading-header { display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:3px solid #9fdcf7; padding:17px 20px; font-size:clamp(8px,1.2vw,11px); line-height:1.7; }
-.birthday-loading-content { padding:35px 34px 30px; text-align:center; }
-.birthday-loading-cake { font-family:sans-serif; font-size:36px; margin-bottom:18px; }
-.birthday-loading-content h1 { margin:0 0 27px; font-size:clamp(18px,3.2vw,33px); line-height:1.55; color:#f6f9ff; text-shadow:3px 4px #2777a7; }
-.birthday-loading-content p { margin:0 auto 34px; max-width:560px; padding:17px 16px; border:2px solid #91d4f3; border-radius:8px; background:#246187; font-size:clamp(9px,1.25vw,12px); line-height:2; }
-.birthday-loading-track { height:25px; padding:3px; border:3px solid #b8e8ff; border-radius:4px; background:#113e61; overflow:hidden; }
-.birthday-loading-fill { height:100%; transition:width .45s ease; background:repeating-linear-gradient(90deg,#70cfff 0 18px,#b1e9ff 18px 21px,#277ea9 21px 24px); }
-.birthday-loading-status { display:flex; justify-content:space-between; gap:12px; margin-top:14px; font-size:clamp(8px,1.05vw,10px); line-height:1.8; }
-.birthday-loading-enter { margin-top:28px; padding:15px 20px; border:3px solid #c8f2ff; border-radius:6px; background:#2d8fc1; color:#fff; font:inherit; font-size:clamp(9px,1.2vw,12px); cursor:pointer; box-shadow:0 5px 0 #0c3b61; }
-.birthday-loading-enter:hover { background:#4aa9d6; transform:translateY(-2px); }
-.birthday-loading-enter:focus-visible { outline:3px solid white; outline-offset:4px; }
-@media(max-width:600px) { .birthday-loading {padding:18px 12px;} .birthday-loading-header {padding:12px 10px;} .birthday-loading-content {padding:23px 14px 22px;} .birthday-loading-content p {padding:13px 9px;} }
-/* Keep pixel-art backgrounds crisp */
-.loading-screen {
-  image-rendering: pixelated;
+
+/* MAIN LOADING SCREEN */
+.birthday-loading,
+.birthday-loading * {
+  box-sizing: border-box;
 }
 
-.loading-screen img {
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
+.birthday-loading {
+  min-height: 100dvh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+
+  background-color: #72cbe9;
+  background-image: url('/loading-landscape.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  font-family: 'Press Start 2P', monospace;
+  color: #effaff;
+}
+
+/* BLUE GAME WINDOW */
+.birthday-loading-panel {
+  position: relative;
+  width: min(880px, 94vw);
+
+  background: rgba(19, 77, 115, 0.96);
+  border: 4px solid #d2f2ff;
+  outline: 4px solid #21658b;
+  border-radius: 13px;
+
+  box-shadow:
+    0 12px 0 rgba(21, 68, 93, 0.4),
+    0 20px 45px rgba(22, 68, 92, 0.3);
+}
+
+/* WINDOW HEADER */
+.birthday-loading-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  border-bottom: 3px solid #9fdcf7;
+  padding: 20px 26px;
+
+  font-size: clamp(10px, 1.2vw, 13px);
+  line-height: 1.7;
+}
+
+/* MAIN CONTENT */
+.birthday-loading-content {
+  padding: 42px 44px 38px;
+  text-align: center;
+}
+
+/* BIRTHDAY CAKE */
+.birthday-loading-cake {
+  font-family: sans-serif;
+  font-size: 42px;
+  margin-bottom: 22px;
+}
+
+/* HELLO LOVEEE */
+.birthday-loading-content h1 {
+  margin: 0 0 30px;
+
+  font-size: clamp(22px, 3vw, 39px);
+  line-height: 1.5;
+
+  color: #f6f9ff;
+  text-shadow: 3px 4px #2777a7;
+}
+
+/* TAGALOG MESSAGE */
+.birthday-loading-content p {
+  margin: 0 auto 36px;
+  max-width: 730px;
+
+  padding: 22px 20px;
+
+  border: 2px solid #91d4f3;
+  border-radius: 8px;
+  background: #246187;
+
+  font-size: clamp(10px, 1.15vw, 14px);
+  line-height: 2.1;
+}
+
+/* PROGRESS BAR */
+.birthday-loading-track {
+  height: 29px;
+  padding: 3px;
+
+  border: 3px solid #b8e8ff;
+  border-radius: 4px;
+  background: #113e61;
+  overflow: hidden;
+}
+
+.birthday-loading-fill {
+  height: 100%;
+  transition: width 0.45s ease;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #70cfff 0 18px,
+    #b1e9ff 18px 21px,
+    #277ea9 21px 24px
+  );
+}
+
+/* LOADING STATUS */
+.birthday-loading-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-top: 18px;
+
+  font-size: clamp(9px, 1.1vw, 12px);
+  line-height: 1.8;
+}
+
+/* ENTER ROOM BUTTON */
+.birthday-loading-enter {
+  margin-top: 32px;
+  padding: 19px 28px;
+
+  border: 3px solid #c8f2ff;
+  border-radius: 6px;
+
+  background: #2d8fc1;
+  color: #fff;
+
+  font: inherit;
+  font-size: clamp(10px, 1.2vw, 13px);
+
+  cursor: pointer;
+  box-shadow: 0 5px 0 #0c3b61;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.birthday-loading-enter:hover {
+  background: #4aa9d6;
+  transform: translateY(-2px);
+}
+
+.birthday-loading-enter:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+  .birthday-loading {
+    padding: 18px 12px;
+  }
+
+  .birthday-loading-panel {
+    width: 100%;
+  }
+
+  .birthday-loading-header {
+    padding: 14px 12px;
+    font-size: 8px;
+  }
+
+  .birthday-loading-content {
+    padding: 26px 16px;
+  }
+
+  .birthday-loading-content h1 {
+    font-size: clamp(16px, 5vw, 25px);
+  }
+
+  .birthday-loading-content p {
+    padding: 16px 12px;
+    font-size: 9px;
+    line-height: 2;
+  }
+
+  .birthday-loading-cake {
+    font-size: 32px;
+  }
+
+  .birthday-loading-status {
+    font-size: 8px;
+  }
 }
