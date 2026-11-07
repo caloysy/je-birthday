@@ -82,7 +82,7 @@ function App() {
 >
   <polygon
     className="window-svg-hotspot"
-    points="35,148 225,170 225,326 35,348"
+    points="35,148 232,170 232,315 35,332"
     role="button"
     tabIndex={0}
     aria-label="Look outside the window"
