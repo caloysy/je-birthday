@@ -72,13 +72,30 @@ function App() {
                 }}
               />
 
-              {/* CLICKABLE WINDOW */}
-              <button
-                className="window-hotspot"
-                onClick={() => setScreen('window')}
-                aria-label="Look outside the window"
-                title="Look outside"
-              />
+             
+{/* CUSTOM-SHAPED CLICKABLE WINDOW */}
+<svg
+  className="room-hotspots"
+  viewBox="0 0 1000 562.5"
+  preserveAspectRatio="none"
+  aria-label="Interactive bedroom objects"
+>
+  <polygon
+    className="window-svg-hotspot"
+    points="82,157 245,171 245,324 82,343"
+    role="button"
+    tabIndex={0}
+    aria-label="Look outside the window"
+    onClick={() => setScreen('window')}
+    onKeyDown={(event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setScreen('window');
+      }
+    }}
+  />
+</svg>
+
             </div>
 
             <p>
