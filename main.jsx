@@ -443,10 +443,10 @@ height="74"
       <span>{String(seconds).padStart(2, '0')}s</span>
     </div>
 
-    <p>Wait until midnight, birthday boy! ♡</p>
+    <p>Wait until midnight, bebe! ♡</p>
   </div>
 ) : (
-  <p>IT'S YOUR BIRTHDAY! MAKE A WISH! ♡</p>
+  <p>MAKE A WISH! ♡</p>
 )}
 
             <button
