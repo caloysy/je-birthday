@@ -1395,3 +1395,19 @@ button { font-family: inherit; }
   from { transform: translateY(-20px) rotate(0); }
   to { transform: translateY(500px) rotate(540deg); }
 }
+
+.cake-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.cake-svg-hotspot:hover,
+.cake-svg-hotspot:focus-visible {
+  fill: rgba(255, 220, 150, 0.08);
+  stroke: #ffe3a2;
+  outline: none;
+}
