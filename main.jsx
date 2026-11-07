@@ -106,11 +106,24 @@ function App() {
       {/* Animated moon */}
       <div className="animated-moon" aria-hidden="true" />
 
-      {/* Animated rain — only outside the window */}
-      <div className="rain-area" aria-hidden="true">
-        <div className="rain-layer rain-back" />
-        <div className="rain-layer rain-front" />
-      </div>
+     
+{/* Individual animated raindrops */}
+<div className="rain-area" aria-hidden="true">
+  {Array.from({ length: 85 }, (_, i) => (
+    <span
+      key={i}
+      className="pixel-raindrop"
+      style={{
+        left: `${(i * 37.7) % 100}%`,
+        top: `${(i * 23.3) % 100}%`,
+        animationDelay: `${-((i * 0.37) % 2.5)}s`,
+        animationDuration: `${0.9 + (i % 5) * 0.18}s`,
+        opacity: 0.18 + (i % 4) * 0.08
+      }}
+    />
+  ))}
+</div>
+
 
       {/* Clickable back button */}
       <button
