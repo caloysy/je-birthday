@@ -1183,3 +1183,19 @@ button { font-family: inherit; }
   background: #eaf0e4;
   color: #2d4845;
 }
+
+/* Remove duplicate Letter.txt title bar */
+.gift-letter::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Match the title bar to the green theme */
+.gift-titlebar {
+  background: #304f4b !important;
+  border-bottom: 3px solid #8eafba;
+}
+
+.gift-titlebar-name {
+  color: #f5f4e8;
+}
