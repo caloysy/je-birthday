@@ -902,3 +902,78 @@ button { font-family: inherit; }
   fill: rgba(255, 243, 207, 0.06);
   outline: none;
 }
+/* GIFT LETTER POPUP */
+
+.gift-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 25, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.gift-letter {
+  position: relative;
+  background: #fff0d5;
+  color: #553c37;
+  border: 5px solid #d7a77e;
+  border-radius: 8px;
+  box-shadow: 8px 8px 0 #392b36;
+  width: min(450px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 35px 28px;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  animation: letterAppear 0.25s ease-out;
+}
+
+.gift-letter h2 {
+  font-size: 16px;
+  margin: 20px 0 25px;
+}
+
+.gift-letter-icon {
+  font-size: 35px;
+}
+
+.gift-letter-message {
+  font-size: 10px;
+  line-height: 2.2;
+  text-align: left;
+}
+
+.gift-letter-message p {
+  margin-bottom: 20px;
+}
+
+.gift-letter-footer {
+  font-size: 9px;
+  margin-top: 25px;
+  color: #a16b65;
+}
+
+.gift-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: #553c37;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
