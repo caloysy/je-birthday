@@ -1026,3 +1026,124 @@ button { font-family: inherit; }
   font-style: italic;
   margin-top: 30px;
 }
+
+/* ===== BIRTHDAY.EXE - LETTER.TXT WINDOW ===== */
+
+.gift-overlay {
+  background: rgba(10, 12, 27, 0.82);
+  backdrop-filter: blur(2px);
+}
+
+.gift-letter {
+  position: relative;
+  width: min(720px, 94vw);
+  max-height: 85dvh;
+  padding: 0;
+  overflow: hidden;
+  background: #fff0dc;
+  color: #493047;
+  border: 5px solid #59406d;
+  border-radius: 0;
+  box-shadow:
+    0 0 0 3px #e7b6d0,
+    9px 9px 0 #231c35;
+  text-align: left;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Computer title bar */
+.gift-letter::before {
+  content: "▤  Letter.txt";
+  display: flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 20px;
+  background: #59406d;
+  color: #fff0dc;
+  border-bottom: 4px solid #dca8c9;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+/* Hide the old heading and envelope */
+.gift-letter-icon,
+.gift-letter h2 {
+  display: none;
+}
+
+/* Scrollable letter area */
+.gift-letter-message {
+  max-height: calc(85dvh - 110px);
+  overflow-y: auto;
+  padding: 28px 34px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  line-height: 2.2;
+  text-align: left;
+  scrollbar-color: #b78eae #f3d9dc;
+  scrollbar-width: thin;
+}
+
+.gift-letter-message p {
+  margin: 0 0 24px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.gift-letter-message p:first-child,
+.gift-letter-message p:last-child {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: normal;
+  margin-top: 0;
+}
+
+/* Bottom computer status bar */
+.gift-letter-footer {
+  margin: 0;
+  padding: 12px 18px;
+  background: #eac0cb;
+  color: #59406d;
+  border-top: 3px solid #59406d;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  text-align: right;
+}
+
+/* Pixelated close button */
+.gift-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+  width: 32px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: #f4a9b8;
+  border: 3px solid #fff0dc;
+  border-radius: 0;
+  color: #493047;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #34263f;
+}
+
+.gift-close:hover {
+  background: #ffced7;
+}
+
+@media (max-width: 600px) {
+  .gift-letter::before {
+    height: 46px;
+    padding-left: 12px;
+    font-size: 11px;
+  }
+
+  .gift-letter-message {
+    padding: 20px 16px;
+    font-size: 8px;
+    line-height: 2.1;
+  }
+}
