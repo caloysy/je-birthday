@@ -885,3 +885,20 @@ button { font-family: inherit; }
   stroke: #ffe6a3;
   filter: drop-shadow(0 0 4px #ffd580);
 }
+/* GIFT HOTSPOT - DOTTED OUTLINE */
+.gift-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  cursor: pointer;
+  transition: stroke 0.2s ease;
+}
+
+.gift-svg-hotspot:hover,
+.gift-svg-hotspot:focus-visible {
+  stroke: #fff3cf;
+  stroke-dasharray: 4 4;
+  fill: rgba(255, 243, 207, 0.06);
+  outline: none;
+}
