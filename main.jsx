@@ -237,9 +237,7 @@ height="55"
         ✕
       </button>
 
-      <div className="gift-letter-icon">💌</div>
-
-      <h2>FOR YOU ♡</h2>
+    
 
       <div className="gift-letter-message">
 
