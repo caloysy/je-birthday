@@ -9,7 +9,7 @@ function App() {
   const [progress, setProgress] = useState(0);
   const musicRef = useRef(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
-
+  const [volume, setVolume] = useState(0.5);
 const toggleMusic = async () => {
   const audio = musicRef.current;
   if (!audio) return;
@@ -52,6 +52,9 @@ const toggleMusic = async () => {
       event.currentTarget.currentTime = 0;
       if (event.currentTarget.paused) {
         event.currentTarget.play().catch(console.error);
+        volume={volume}
+        onPlay={() => setMusicPlaying(true)}
+        onPause={() => setMusicPlaying(false)}
       }
     }
   }}
@@ -92,6 +95,48 @@ const toggleMusic = async () => {
         <section className="room-screen">
           <div className="room-wrap">
 
+<div className="music-widget">
+  <div className="music-widget-info">
+    <span className="music-note">♫</span>
+    <div>
+      <div className="music-widget-title">
+        {musicPlaying ? '♪ NOW PLAYING' : '♫ MUSIC PAUSED'}
+      </div>
+      <div className="music-widget-subtitle">
+        Birthday Soundtrack ♡
+      </div>
+    </div>
+  </div>
+
+  <div className="music-widget-controls">
+    <button
+      type="button"
+      onClick={toggleMusic}
+      aria-label={musicPlaying ? 'Pause music' : 'Play music'}
+    >
+      {musicPlaying ? 'Ⅱ' : '▶'}
+    </button>
+
+    <span aria-hidden="true">♫</span>
+
+    <input
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value={volume}
+      onChange={(event) =>
+        setVolume(Number(event.target.value))
+      }
+      aria-label="Music volume"
+    />
+
+    <span className="music-volume">
+      {Math.round(volume * 100)}%
+    </span>
+  </div>
+</div>
+
             <div className="room-heading">
               <h1>✦ BIRTHDAY ROOM ✦</h1>
               <span>click objects to explore</span>
@@ -130,12 +175,14 @@ const toggleMusic = async () => {
     }}
   />
   
+
 <rect
   className="speaker-svg-hotspot"
-  x="535"
-  y="248"
-  width="30"
-  height="65"
+  x="748"
+  y="345"
+  width="35"
+  height="57"
+  rx="3"
   role="button"
   tabIndex={0}
   aria-label={musicPlaying ? 'Pause music' : 'Play music'}
@@ -147,6 +194,7 @@ const toggleMusic = async () => {
     }
   }}
 />
+
 
 </svg>
 
