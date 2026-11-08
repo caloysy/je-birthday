@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import LoadingScreen from './LoadingScreen';
-// Trigger latest BIRTHDAY.EXE deployment
+
 const playedGames = [
   { name: 'Minecraft', image: 'minecraft.png' },
   { name: 'Mobile Legends', image: 'mobile-legends.png' },
@@ -63,6 +63,32 @@ function App() {
   const [giftOpen, setGiftOpen] = useState(false);
   const [cakeOpen, setCakeOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
+  const [catOpen, setCatOpen] = useState(false);
+const [petCount, setPetCount] = useState(0);
+const [catMessage, setCatMessage] = useState(
+  "Shhh... the little cat is sleeping. Give it a pet!"
+);
+const [catHeart, setCatHeart] = useState(0);
+
+const catDialogues = [
+  "Ay, ginising mo ako. May pagkain ka ba?",
+  "Isa pa. Hindi pa sapat.",
+  "Meow. Libre lang naman mang-pet, diba?",
+  "Okay, favorite human na kita. Slightly.",
+  "Grabe ka naman. Wala ka bang ibang gagawin?",
+  "Sige lang. Ako naman ang boss dito.",
+  "Pet mo lang ako. Wala kang choice.",
+  "Uy, baka ma-fall ako sa'yo niyan.",
+  "Konti na lang... may sikreto ako.",
+  "MEOW! Tatay na kita ngayon. 🐱"
+];
+
+const petNailong = () => {
+  const nextCount = petCount + 1;
+  setPetCount(nextCount);
+  setCatHeart((previous) => previous + 1);
+  setCatMessage(catDialogues[(nextCount - 1) % catDialogues.length]);
+};
   const [candlesBlown, setCandlesBlown] = useState(false);
   const [timeLeft, setTimeLeft] = useState(() =>
   Math.max(
@@ -332,7 +358,25 @@ height="74"
     }
   }}
 />
-
+{/* CLICKABLE SLEEPING CAT */}
+<rect
+  className="cat-svg-hotspot"
+  x="300"
+  y="375"
+  width="115"
+  height="95"
+  rx="5"
+  role="button"
+  tabIndex={0}
+  aria-label="Pet the sleeping cat"
+  onClick={() => setCatOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setCatOpen(true);
+    }
+  }}
+/>
 </svg>
 
             </div>
@@ -599,7 +643,95 @@ height="74"
     </div>
   </div>
 )}
-     
+{/* NAILONG CAT POPUP */}
+{catOpen && (
+  <div className="cat-overlay">
+    <div
+      className="cat-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Nailong pet simulator"
+    >
+      <img
+        className="cat-background"
+        src="/cat-room.png"
+        alt="Nailong resting in a cozy pixel-art room"
+      />
+
+      <button
+        className="cat-close"
+        onClick={() => setCatOpen(false)}
+        aria-label="Close cat popup"
+      />
+
+      <div className="cat-interface">
+        <div className="cat-progress">
+          <span>🐟</span>
+          <div className="cat-progress-track">
+            <div
+              className="cat-progress-fill"
+              style={{
+                width: `${Math.min(petCount, 10) * 10}%`
+              }}
+            />
+          </div>
+          <span>♡</span>
+        </div>
+
+        <div className="cat-dialogue">
+          {catMessage}
+        </div>
+
+        <div className="cat-floating-heart" key={catHeart}>
+          {catHeart > 0 ? '♡' : ''}
+        </div>
+
+        <div className="cat-controls">
+          <p>🐾 PETS GIVEN: {petCount}</p>
+
+          <button
+            className="cat-pet-button"
+            onClick={petNailong}
+          >
+            🐾 PET
+          </button>
+        </div>
+
+        <div className="cat-achievements">
+          <h3>✦ ACHIEVEMENTS ✦</h3>
+
+          <div className="cat-achievement-grid">
+            <div className={petCount >= 5 ? 'cat-achievement unlocked' : 'cat-achievement'}>
+              <span>{petCount >= 5 ? '🏆' : '🔒'}</span>
+              <strong>
+                {petCount >= 5 ? 'Certified Cat Servant' : '???'}
+              </strong>
+              <small>
+                {petCount >= 5 ? 'UNLOCKED!' : 'Unlock at 5 pets'}
+              </small>
+            </div>
+
+            <div className={petCount >= 10 ? 'cat-achievement unlocked' : 'cat-achievement'}>
+              <span>{petCount >= 10 ? '👑' : '🔒'}</span>
+              <strong>
+                {petCount >= 10 ? 'Tatay ni Nailong' : '???'}
+              </strong>
+              <small>
+                {petCount >= 10 ? 'IDENTITY REVEALED!' : 'Unlock at 10 pets'}
+              </small>
+            </div>
+          </div>
+        </div>
+
+        {petCount >= 10 && (
+          <div className="cat-reveal">
+            ✦ IDENTITY REVEALED: NAILONG ✦
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+)}    
 {/* INTERACTIVE WINDOW */}
 {screen === 'window' && (
   <section className="window-screen">
