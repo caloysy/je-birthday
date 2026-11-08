@@ -2113,7 +2113,7 @@ button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   background: #fff0d8;
-  border: 2px solid #8a765b;
+  border: 4px solid #8a765b;
   border-radius: 7px;
   box-shadow: 2px 3px 0 #364a39;
   color: #405144;
@@ -2198,7 +2198,7 @@ button { font-family: inherit; }
   width: 76%;
   padding: 1.5cqw;
   background: rgba(243, 229, 201, 0.97);
-  border: 2px solid #8d9b7e;
+  border: 4px solid #8d9b7e;
   border-radius: 7px;
   color: #405445;
   text-align: center;
@@ -2261,7 +2261,7 @@ button { font-family: inherit; }
   width: 52%;
   padding: 1.2cqw;
   background: #f6dc9d;
-  border: 2px solid #3d513d;
+   border: 4px solid #3d513d;
   color: #3d513d;
   text-align: center;
   font-size: clamp(6px, 1.5cqw, 9px);
