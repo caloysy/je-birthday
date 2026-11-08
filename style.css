@@ -2056,10 +2056,6 @@ button { font-family: inherit; }
   cursor: pointer;
 }
 
-.cat-close:hover {
-  background: rgba(255, 210, 165, 0.22);
-}
-
 .cat-interface {
   position: absolute;
   inset: 0;
