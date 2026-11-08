@@ -1909,3 +1909,27 @@ button { font-family: inherit; }
   object-position: center;
   image-rendering: pixelated;
 }
+/* Make game covers fill their frames naturally */
+.games-cover {
+  aspect-ratio: 2 / 5;
+  background: #dce9dd;
+  overflow: hidden;
+}
+
+.games-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: pixelated;
+}
+
+/* Keep game cards aligned */
+.games-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.games-card-info {
+  margin-top: auto;
+}
