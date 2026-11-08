@@ -558,7 +558,7 @@ height="74"
       <div className="games-content">
         <div className="games-intro">
           <span className="games-intro-icon">✦ ♡ ✦</span>
-          <h2>OUR LITTLE GAME LIBRARY</h2>
+          <h2>GAME LIBRARY</h2>
           <p>A collection of adventures, past and future.</p>
         </div>
 
@@ -587,9 +587,7 @@ height="74"
         <div className="games-footer">
           <span>✦ MORE ADVENTURES TO COME ✦</span>
           <p>
-            Some games we've finished, some we haven't started.
-            But my favorite part will always be playing them
-            with you. ♡
+            Alam mo namang bulok ako maglaro kaya bawal ka magreklamo pag kalaro ako ha?. Labyu. 
           </p>
         </div>
       </div>
