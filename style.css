@@ -2259,3 +2259,42 @@ button { font-family: inherit; }
     transition: none;
   }
 }
+/* CAT.EXE — LAYOUT CORRECTIONS */
+
+.cat-popup {
+  width: min(680px, 96vw);
+  max-height: 96dvh;
+}
+
+.cat-progress {
+  top: 20%;
+  left: 27%;
+  width: 46%;
+}
+
+.cat-controls {
+  top: 66%;
+  left: 10%;
+  width: 80%;
+  z-index: 3;
+}
+
+.cat-controls p {
+  margin-bottom: 12px;
+}
+
+.cat-pet-button {
+  display: inline-block;
+  position: relative;
+  z-index: 4;
+  background: #f1c18e;
+  color: #314539;
+  padding: 12px 30px;
+}
+
+.cat-achievements {
+  bottom: 4%;
+  left: 11%;
+  width: 78%;
+  z-index: 2;
+}
