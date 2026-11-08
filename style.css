@@ -1901,3 +1901,11 @@ button { font-family: inherit; }
 .games-cover img {
   image-rendering: pixelated;
 }
+/* Show the entire pixel-art game cover */
+.games-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: pixelated;
+}
