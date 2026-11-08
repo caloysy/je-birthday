@@ -1933,3 +1933,33 @@ button { font-family: inherit; }
 .games-card-info {
   margin-top: auto;
 }
+/* FINAL GAME COVER FIX */
+
+.games-cover {
+  width: 100%;
+  aspect-ratio: 2 / 5;
+  background: #eaf0e4;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.games-cover img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: pixelated;
+}
+
+.games-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.games-card-info {
+  margin-top: auto;
+}
