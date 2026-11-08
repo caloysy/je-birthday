@@ -666,17 +666,21 @@ height="74"
 
       <div className="cat-interface">
         <div className="cat-progress">
-          <span>🐟</span>
-          <div className="cat-progress-track">
-            <div
-              className="cat-progress-fill"
-              style={{
-                width: `${Math.min(petCount, 10) * 10}%`
-              }}
-            />
-          </div>
-          <span>♡</span>
-        </div>
+  <div className="cat-fish-icons">
+    {[0, 1, 2].map((i) => (
+      <span key={i}>
+        {i < Math.min(3, petCount % 5) ? '🐟' : '◇'}
+      </span>
+    ))}
+  </div>
+
+  <div className="cat-progress-track">
+    <div
+      className="cat-progress-fill"
+      style={{ width: `${(petCount % 5) * 20}%` }}
+    />
+  </div>
+</div>
 
         <div className="cat-dialogue">
           {catMessage}
@@ -686,16 +690,16 @@ height="74"
           {catHeart > 0 ? '♡' : ''}
         </div>
 
-        <div className="cat-controls">
-          <p>🐾 PETS GIVEN: {petCount}</p>
+        <div className="cat-counter">
+  🐾 PETS GIVEN: {petCount}
+</div>
 
-          <button
-            className="cat-pet-button"
-            onClick={petNailong}
-          >
-            🐾 PET
-          </button>
-        </div>
+<button
+  className="cat-pet-button"
+  onClick={petNailong}
+>
+  🐾 PET
+</button>
 
         <div className="cat-achievements">
           <h3>✦ ACHIEVEMENTS ✦</h3>
