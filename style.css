@@ -1963,3 +1963,29 @@ button { font-family: inherit; }
 .games-card-info {
   margin-top: auto;
 }
+/* FINAL FIX — FULL GAME COVERS */
+
+.games-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #304f4b;
+}
+
+.games-cover img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: pixelated;
+  z-index: 2;
+}
+
+/* Hide the placeholder when an image loads */
+.games-cover:has(img[src]:not([src=""])) .games-cover-placeholder {
+  display: none;
+}
