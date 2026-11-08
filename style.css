@@ -1990,8 +1990,9 @@ button { font-family: inherit; }
   display: none;
 }
 
+
 /* ==========================================
-   CAT.EXE — NAILONG PET SIMULATOR
+   CAT.EXE — CLEAN FINAL LAYOUT
 ========================================== */
 
 .cat-svg-hotspot {
@@ -2023,7 +2024,7 @@ button { font-family: inherit; }
 
 .cat-popup {
   position: relative;
-  width: min(560px, 94vw);
+  width: min(620px, 94vw, 81vh);
   aspect-ratio: 1169 / 1279;
   max-height: 94dvh;
   overflow: hidden;
@@ -2065,6 +2066,7 @@ button { font-family: inherit; }
   pointer-events: none;
 }
 
+/* Progress bar — upper wall */
 .cat-progress {
   position: absolute;
   top: 19%;
@@ -2073,12 +2075,12 @@ button { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: clamp(8px, 1.5vw, 13px);
+  font-size: clamp(7px, 1vw, 10px);
 }
 
 .cat-progress-track {
   flex: 1;
-  height: 13px;
+  height: 11px;
   border: 2px solid #273e32;
   background: #f2e4c5;
   overflow: hidden;
@@ -2090,24 +2092,26 @@ button { font-family: inherit; }
   transition: width 0.3s ease;
 }
 
+/* Dialogue — right of Nailong */
 .cat-dialogue {
   position: absolute;
-  top: 33%;
+  top: 34%;
   right: 7%;
-  width: 38%;
-  min-height: 11%;
+  width: 37%;
+  min-height: 10%;
   display: grid;
   place-items: center;
-  padding: 10px;
+  padding: 8px;
   background: #fff1d8;
-  border: 3px solid #594f3f;
-  box-shadow: 3px 4px 0 #283a30;
+  border: 2px solid #594f3f;
+  box-shadow: 3px 3px 0 #283a30;
   color: #415144;
   text-align: center;
-  font-size: clamp(6px, 1vw, 9px);
-  line-height: 1.8;
+  font-size: clamp(6px, 0.85vw, 9px);
+  line-height: 1.7;
 }
 
+/* Floating heart animation */
 .cat-floating-heart {
   position: absolute;
   left: 48%;
@@ -2118,34 +2122,47 @@ button { font-family: inherit; }
 }
 
 @keyframes cat-heart-float {
-  from { opacity: 1; transform: translateY(0) scale(0.8); }
-  to { opacity: 0; transform: translateY(-45px) scale(1.4); }
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-45px) scale(1.4);
+  }
 }
 
+/* Pet counter and button — wooden floor */
 .cat-controls {
   position: absolute;
-  top: 68%;
+  top: 65%;
   left: 10%;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
   text-align: center;
   pointer-events: auto;
+  z-index: 3;
 }
 
 .cat-controls p {
-  margin: 0 0 15px;
-  font-size: clamp(8px, 1.4vw, 12px);
-  line-height: 1.7;
+  margin: 0;
+  font-size: clamp(8px, 1.1vw, 11px);
+  line-height: 1.6;
   color: #f9e8c6;
   text-shadow: 2px 2px #263b30;
 }
 
 .cat-pet-button {
-  padding: 12px 28px;
+  display: inline-block;
+  padding: 12px 32px;
   border: 3px solid #253c30;
   background: #f1c18e;
   color: #314539;
   box-shadow: 4px 4px 0 #253c30;
-  font-size: clamp(9px, 1.5vw, 13px);
+  font-size: clamp(9px, 1.2vw, 12px);
   cursor: pointer;
 }
 
@@ -2154,27 +2171,29 @@ button { font-family: inherit; }
   transform: translateY(-2px);
 }
 
+/* Achievements — bottom of wooden floor */
 .cat-achievements {
   position: absolute;
+  bottom: 3.5%;
   left: 11%;
-  bottom: 6%;
   width: 78%;
-  padding: 12px;
+  padding: 9px;
   background: #f3e5c9;
-  border: 3px solid #455d47;
+  border: 2px solid #455d47;
   color: #405445;
   text-align: center;
+  z-index: 2;
 }
 
 .cat-achievements h3 {
-  margin: 0 0 10px;
-  font-size: clamp(7px, 1.2vw, 10px);
+  margin: 0 0 8px;
+  font-size: clamp(7px, 1vw, 9px);
 }
 
 .cat-achievement-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
 }
 
 .cat-achievement {
@@ -2182,9 +2201,9 @@ button { font-family: inherit; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-height: 75px;
-  padding: 8px 4px;
+  gap: 5px;
+  min-height: 65px;
+  padding: 6px 4px;
   background: #e3dfd1;
   border: 2px solid #a8b7a4;
   opacity: 0.65;
@@ -2197,104 +2216,69 @@ button { font-family: inherit; }
 }
 
 .cat-achievement span {
-  font-size: 19px;
+  font-size: 17px;
 }
 
 .cat-achievement strong,
 .cat-achievement small {
-  font-size: clamp(5px, 0.9vw, 8px);
-  line-height: 1.6;
+  font-size: clamp(5px, 0.75vw, 7px);
+  line-height: 1.5;
   overflow-wrap: anywhere;
 }
 
+/* Hidden identity reveal */
 .cat-reveal {
   position: absolute;
   top: 12%;
   left: 10%;
   width: 80%;
-  padding: 9px;
+  padding: 8px;
   background: #f6dc9d;
   border: 2px solid #3d513d;
   color: #3d513d;
   text-align: center;
-  font-size: clamp(6px, 1vw, 9px);
-  line-height: 1.7;
+  font-size: clamp(6px, 0.85vw, 9px);
+  line-height: 1.6;
 }
 
+/* Mobile adjustments */
 @media (max-width: 600px) {
   .cat-dialogue {
     padding: 5px;
     border-width: 2px;
+    font-size: 6px;
   }
 
   .cat-controls {
-    top: 67%;
+    gap: 8px;
   }
 
   .cat-controls p {
-    margin-bottom: 7px;
+    font-size: 7px;
   }
 
   .cat-pet-button {
-    padding: 8px 14px;
+    padding: 8px 16px;
     border-width: 2px;
   }
 
   .cat-achievements {
-    padding: 6px;
-    border-width: 2px;
+    padding: 5px;
   }
 
   .cat-achievement {
-    min-height: 50px;
-    padding: 4px;
+    min-height: 45px;
+    padding: 4px 2px;
     gap: 3px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cat-floating-heart,
-  .cat-progress-fill {
+  .cat-floating-heart {
     animation: none;
+  }
+
+  .cat-progress-fill {
     transition: none;
   }
-}
-/* CAT.EXE — LAYOUT CORRECTIONS */
-
-.cat-popup {
-  width: min(680px, 96vw);
-  max-height: 96dvh;
-}
-
-.cat-progress {
-  top: 20%;
-  left: 27%;
-  width: 46%;
-}
-
-.cat-controls {
-  top: 66%;
-  left: 10%;
-  width: 80%;
-  z-index: 3;
-}
-
-.cat-controls p {
-  margin-bottom: 12px;
-}
-
-.cat-pet-button {
-  display: inline-block;
-  position: relative;
-  z-index: 4;
-  background: #f1c18e;
-  color: #314539;
-  padding: 12px 30px;
-}
-
-.cat-achievements {
-  bottom: 4%;
-  left: 11%;
-  width: 78%;
-  z-index: 2;
 }
