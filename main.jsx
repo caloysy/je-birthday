@@ -361,10 +361,10 @@ height="74"
 {/* CLICKABLE SLEEPING CAT */}
 <rect
   className="cat-svg-hotspot"
-  x="300"
-  y="375"
-  width="115"
-  height="95"
+  x="120"
+  y="405"
+  width="165"
+  height="100"
   rx="5"
   role="button"
   tabIndex={0}
