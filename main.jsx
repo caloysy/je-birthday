@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import LoadingScreen from './LoadingScreen';
-
+// Trigger latest BIRTHDAY.EXE deployment
 const playedGames = [
   { name: 'Minecraft', image: 'minecraft.png' },
   { name: 'Mobile Legends', image: 'mobile-legends.png' },
