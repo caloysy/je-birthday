@@ -2282,3 +2282,138 @@ button { font-family: inherit; }
     transition: none;
   }
 }
+
+/* ==========================================
+   CAT.EXE — FINAL POSITIONING FIX
+   Add at the END of style.css
+========================================== */
+
+/* Keep the artwork proportional */
+.cat-popup {
+  width: min(620px, 94vw, calc(90dvh * 1169 / 1279));
+  aspect-ratio: 1169 / 1279;
+  max-height: 90dvh;
+}
+
+.cat-background {
+  object-fit: fill;
+}
+
+/* Fish progress meter: green wall above Nailong */
+.cat-progress {
+  top: 21%;
+  left: 31%;
+  width: 45%;
+  gap: 6px;
+  justify-content: center;
+  font-size: clamp(7px, 1.1vw, 11px);
+}
+
+.cat-progress-track {
+  height: 9px;
+  min-width: 0;
+  border-width: 2px;
+}
+
+/* Dialogue: right of Nailong */
+.cat-dialogue {
+  top: 34%;
+  right: 7%;
+  width: 37%;
+  min-height: 9%;
+  padding: 7px;
+  font-size: clamp(5px, 0.85vw, 8px);
+  line-height: 1.65;
+  box-sizing: border-box;
+}
+
+/* Pet counter and button: wooden floor */
+.cat-controls {
+  top: 67%;
+  left: 12%;
+  width: 76%;
+  z-index: 3;
+}
+
+.cat-controls p {
+  margin: 0 0 9px;
+  font-size: clamp(7px, 1vw, 10px);
+}
+
+.cat-pet-button {
+  padding: 10px 25px;
+  font-size: clamp(8px, 1.1vw, 11px);
+}
+
+/* Achievements: lower floor with breathing room */
+.cat-achievements {
+  left: 12%;
+  bottom: 5%;
+  width: 76%;
+  padding: 9px;
+  box-sizing: border-box;
+}
+
+.cat-achievements h3 {
+  margin: 0 0 8px;
+  font-size: clamp(6px, 0.9vw, 9px);
+}
+
+.cat-achievement-grid {
+  gap: 7px;
+}
+
+.cat-achievement {
+  min-height: 64px;
+  padding: 6px 4px;
+  gap: 4px;
+}
+
+.cat-achievement span {
+  font-size: 15px;
+}
+
+.cat-achievement strong,
+.cat-achievement small {
+  font-size: clamp(5px, 0.75vw, 7px);
+  line-height: 1.5;
+}
+
+/* Identity banner above progress meter */
+.cat-reveal {
+  top: 13%;
+  left: 24%;
+  width: 52%;
+  padding: 7px;
+  box-sizing: border-box;
+  font-size: clamp(5px, 0.8vw, 8px);
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .cat-dialogue {
+    padding: 4px;
+    border-width: 2px;
+  }
+
+  .cat-controls {
+    top: 66%;
+  }
+
+  .cat-controls p {
+    margin-bottom: 6px;
+  }
+
+  .cat-pet-button {
+    padding: 7px 15px;
+  }
+
+  .cat-achievements {
+    padding: 5px;
+  }
+
+  .cat-achievement {
+    min-height: 46px;
+    gap: 2px;
+  }
+}
