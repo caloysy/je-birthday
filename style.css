@@ -2024,7 +2024,7 @@ button { font-family: inherit; }
 
 .cat-popup {
   position: relative;
-  width: min(620px, 96vw, calc(94dvh * 1169 / 1279));
+  width: min(820px, 96vw, calc(96dvh * 1169 / 1279));
   aspect-ratio: 1169 / 1279;
   container-type: inline-size;
   overflow: hidden;
@@ -2047,8 +2047,8 @@ button { font-family: inherit; }
   position: absolute;
   z-index: 10;
   top: 3.5%;
-  right: 5.7%;
-  width: 6%;
+  right: 10.2%;
+  width: 5%;
   height: 5%;
   padding: 0;
   border: 0;
