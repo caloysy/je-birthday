@@ -97,6 +97,7 @@ function App() {
   const [cakeOpen, setCakeOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
   const [moviesOpen, setMoviesOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const [lightMode, setLightMode] = useState('warm');
 
 const toggleLight = () => {
@@ -415,7 +416,27 @@ height="74"
     }
   }}
 />
-  
+
+{/* CLICKABLE WALL CALENDAR */}
+<rect
+  className="calendar-svg-hotspot"
+  x="598"
+  y="163"
+  width="53"
+  height="55"
+  rx="2"
+  role="button"
+  tabIndex={0}
+  aria-label="Open November birthday calendar"
+  onClick={() => setCalendarOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setCalendarOpen(true);
+    }
+  }}
+/>
+ 
 {/* CLICKABLE BOOKSHELF */}
 <polygon
   className="bookshelf-svg-hotspot"
@@ -463,6 +484,71 @@ height="74"
           </div>
         </section>
       )}
+
+{/* BIRTHDAY CALENDAR POPUP */}
+{calendarOpen && (
+  <div
+    className="calendar-overlay"
+    onClick={() => setCalendarOpen(false)}
+  >
+    <div
+      className="calendar-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-label="November 2026 birthday calendar"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <div className="calendar-titlebar">
+        <span>▣ CALENDAR.EXE</span>
+        <button
+          type="button"
+          onClick={() => setCalendarOpen(false)}
+          aria-label="Close calendar"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="calendar-content">
+        <div className="calendar-decoration">✦ ♡ ✦</div>
+
+        <h2>NOVEMBER</h2>
+        <div className="calendar-year">2026</div>
+
+        <div className="calendar-grid">
+          {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map(day => (
+            <div className="calendar-weekday" key={day}>
+              {day}
+            </div>
+          ))}
+
+          {Array.from({ length: 30 }, (_, i) => {
+            const day = i + 1;
+            return (
+              <div
+                key={day}
+                className={`calendar-day ${day === 16 ? 'birthday-day' : ''}`}
+              >
+                <span>{day}</span>
+                {day === 16 && <span className="calendar-heart">♡</span>}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="calendar-birthday-note">
+          <span>♡ NOVEMBER 16 ♡</span>
+          <h3>Je's Birthday!</h3>
+          <p>My favorite day, because it's the day you were born.</p>
+        </div>
+
+        <div className="calendar-footer">
+          ✦ A VERY SPECIAL DATE ✦
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
 
 {/* GIFT LETTER */}
