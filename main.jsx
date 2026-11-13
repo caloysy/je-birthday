@@ -396,7 +396,7 @@ height="74"
 {/* CLICKABLE BOOKSHELF */}
 <polygon
   className="bookshelf-svg-hotspot"
-  points="286,140 400,140 400,432 286,432"
+  points="286,170 400,170 400,432 286,432"
   role="button"
   tabIndex={0}
   aria-label="Open movies to watch"
