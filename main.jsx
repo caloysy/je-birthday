@@ -396,10 +396,10 @@ height="74"
 {/* CLICKABLE BOOKSHELF */}
 <rect
   className="bookshelf-svg-hotspot"
-  x="300"
-  y="150"
-  width="115"
-  height="230"
+    x="297"
+  y="144"
+  width="105"
+  height="242"
   rx="3"
   role="button"
   tabIndex={0}
