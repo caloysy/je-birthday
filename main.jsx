@@ -454,13 +454,25 @@ height="74"
 />
 
 {/* CLICKABLE SLEEPING CAT */}
-<rect
+
+{/* CLICKABLE SLEEPING CAT */}
+<path
   className="cat-svg-hotspot"
-  x="120"
-  y="405"
-  width="165"
-  height="100"
-  rx="5"
+  d="
+    M 151 445
+    Q 153 427 169 418
+    Q 185 410 205 415
+    Q 219 418 226 430
+    Q 235 425 242 432
+    L 248 444
+    Q 255 443 259 452
+    Q 262 464 251 471
+    Q 239 478 220 476
+    Q 198 478 181 473
+    Q 163 470 155 459
+    Q 149 453 151 445
+    Z
+  "
   role="button"
   tabIndex={0}
   aria-label="Pet the sleeping cat"
@@ -472,6 +484,7 @@ height="74"
     }
   }}
 />
+
 </svg>
 
             </div>
