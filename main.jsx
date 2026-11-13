@@ -97,6 +97,13 @@ function App() {
   const [cakeOpen, setCakeOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
   const [moviesOpen, setMoviesOpen] = useState(false);
+  const [lightMode, setLightMode] = useState('warm');
+
+const toggleLight = () => {
+  setLightMode((previous) =>
+    previous === 'warm' ? 'cool' : 'warm'
+  );
+};
   const [catOpen, setCatOpen] = useState(false);
 const [petCount, setPetCount] = useState(0);
 const [catMessage, setCatMessage] = useState(
@@ -280,7 +287,7 @@ const toggleMusic = async () => {
               <span>click objects to explore</span>
             </div>
 
-            <div className="room-image">
+            <div className={`room-image ${lightMode === 'cool' ? 'room-cool' : 'room-warm'}`}>
               <img
                 src="/bedroom-v2.png"
                 alt="Cozy pixel-art birthday bedroom"
@@ -289,7 +296,7 @@ const toggleMusic = async () => {
                   event.currentTarget.parentElement.classList.add('room-missing');
                 }}
               />
-
+<div className="room-light-overlay" aria-hidden="true" />
              
 {/* CUSTOM-SHAPED CLICKABLE WINDOW */}
 <svg
@@ -389,6 +396,22 @@ height="74"
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       setGamesOpen(true);
+    }
+  }}
+/>
+
+{/* CLICKABLE STAR LIGHT */}
+<polygon
+  className="star-light-hotspot"
+  points="508,103 519,125 544,129 526,147 530,172 508,160 486,172 490,147 472,129 497,125"
+  role="button"
+  tabIndex={0}
+  aria-label={`Switch to ${lightMode === 'warm' ? 'cool' : 'warm'} lighting`}
+  onClick={toggleLight}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleLight();
     }
   }}
 />
