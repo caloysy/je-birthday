@@ -97,6 +97,7 @@ function App() {
   const [cakeOpen, setCakeOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
   const [moviesOpen, setMoviesOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [lightMode, setLightMode] = useState('warm');
 
@@ -381,6 +382,39 @@ height="74"
   }}
 />
 
+{/* CLICKABLE GAMING CHAIR */}
+<path
+  className="chair-svg-hotspot"
+  d="
+    M 418 295
+    Q 421 290 433 290
+    L 458 298
+    Q 474 304 479 322
+    L 484 383
+    Q 492 389 494 405
+    L 490 420
+    L 512 438
+    L 507 447
+    L 478 437
+    L 457 451
+    L 451 446
+    L 464 425
+    L 431 424
+    Q 418 421 418 404
+    Z
+  "
+  role="button"
+  tabIndex={0}
+  aria-label="Open Je's character profile"
+  onClick={() => setProfileOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setProfileOpen(true);
+    }
+  }}
+/>
+
 {/* CLICKABLE COMPUTER */}
 <rect
   className="computer-svg-hotspot"
@@ -558,6 +592,96 @@ d="
 
         <div className="calendar-footer">
           ✦ WAG KA SANA MAMATAY ✦
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+{/* JE CHARACTER PROFILE */}
+{profileOpen && (
+  <div
+    className="profile-overlay"
+    onClick={() => setProfileOpen(false)}
+  >
+    <div
+      className="profile-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Je's character profile"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <div className="profile-titlebar">
+        <span>▣ JE.EXE</span>
+        <button
+          type="button"
+          onClick={() => setProfileOpen(false)}
+          aria-label="Close character profile"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="profile-content">
+        <div className="profile-header">
+          <div className="profile-avatar">🎮</div>
+
+          <div className="profile-identity">
+            <span className="profile-tag">✦ CHARACTER UNLOCKED ✦</span>
+            <h2>JE</h2>
+            <p>CLASS: MAIN CHARACTER</p>
+            <p>BIRTHDAY: NOVEMBER 16</p>
+            <span className="profile-rarity">★ LEGENDARY ★</span>
+          </div>
+        </div>
+
+        <div className="profile-section-title">
+          ✦ CHARACTER STATS ✦
+        </div>
+
+        <div className="profile-stats">
+          {[
+            { name: 'Kindness', value: 95 },
+            { name: 'Humor', value: 90 },
+            { name: 'Patience with Jiks', value: 100 },
+            { name: 'Gaming Skills', value: 85 },
+            { name: 'Main Character Energy', value: 100 }
+          ].map((stat) => (
+            <div className="profile-stat" key={stat.name}>
+              <div className="profile-stat-label">
+                <span>{stat.name}</span>
+                <span>{stat.value}/100</span>
+              </div>
+              <div className="profile-stat-track">
+                <div
+                  className="profile-stat-fill"
+                  style={{ width: `${stat.value}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="profile-section-title">
+          ✦ SPECIAL ABILITY ✦
+        </div>
+
+        <div className="profile-ability">
+          ♡ Making ordinary days feel like adventures.
+        </div>
+
+        <div className="profile-message">
+          <span>✦ NEW CHAPTER UNLOCKED ✦</span>
+          <h3>ANOTHER YEAR OF JE!</h3>
+          <p>
+            May this next chapter bring you everything
+            you've been working and hoping for.
+            I'll always be cheering you on. ♡
+          </p>
+        </div>
+
+        <div className="profile-footer">
+          ♡ ONE OF A KIND ♡
         </div>
       </div>
     </div>
