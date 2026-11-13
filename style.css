@@ -2487,3 +2487,68 @@ button { font-family: inherit; }
     animation: none;
   }
 }
+
+/* =====================================
+   STAR LIGHT — WARM / COOL TOGGLE
+===================================== */
+
+.room-image {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Smooth lighting transition */
+.room-image > img {
+  transition: filter 0.8s ease;
+}
+
+/* Cool nighttime atmosphere */
+.room-image.room-cool > img {
+  filter: brightness(0.86)
+          saturate(0.88)
+          hue-rotate(12deg);
+}
+
+/* Transparent color layer */
+.room-light-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(79, 105, 205, 0);
+  mix-blend-mode: multiply;
+  transition: background 0.8s ease;
+}
+
+.room-cool .room-light-overlay {
+  background: rgba(79, 105, 205, 0.23);
+}
+
+/* Keep clickable objects above lighting */
+.room-hotspots {
+  z-index: 2;
+}
+
+/* Clickable star */
+.star-light-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.star-light-hotspot:hover,
+.star-light-hotspot:focus-visible {
+  fill: rgba(255, 244, 190, 0.15);
+  stroke: #fff1b5;
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .room-image > img,
+  .room-light-overlay {
+    transition: none;
+  }
+}
