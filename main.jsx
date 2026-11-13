@@ -537,13 +537,13 @@ height="74"
         </div>
 
         <div className="calendar-birthday-note">
-          <span>♡ NOVEMBER 16 ♡</span>
+          <span>NOVEMBER 16</span>
           <h3>Je's Birthday!</h3>
-          <p>My favorite day, because it's the day you were born.</p>
+          <p>Reminder: Ipaalala sa kanya na age doesnt matter</p>
         </div>
 
         <div className="calendar-footer">
-          ✦ A VERY SPECIAL DATE ✦
+          ✦ WAG KA SANA MAMATAY ✦
         </div>
       </div>
     </div>
