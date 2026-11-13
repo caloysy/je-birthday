@@ -403,7 +403,7 @@ height="74"
 {/* CLICKABLE STAR LIGHT */}
 <polygon
   className="star-light-hotspot"
-  points="508,103 519,125 544,129 526,147 530,172 508,160 486,172 490,147 472,129 497,125"
+ points="579,96 586,110 601,112 590,123 593,138 579,131 565,138 568,123 557,112 572,110"
   role="button"
   tabIndex={0}
   aria-label={`Switch to ${lightMode === 'warm' ? 'cool' : 'warm'} lighting`}
