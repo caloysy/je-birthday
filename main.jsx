@@ -26,6 +26,39 @@ const wishlistGames = [
   { name: 'Content Warning', image: 'content-warning.png' }
 ];
 
+const moviesToWatch = [
+  {
+    title: 'Clayface',
+    image: 'clayface.jpg',
+    synopsis: 'An aspiring actor undergoes an experimental treatment after a terrible injury, with horrifying consequences.'
+  },
+  {
+    title: 'Project Hail Mary',
+    image: 'project-hail-mary.jpg',
+    synopsis: 'An astronaut wakes up alone in space with no memory of his mission and must find a way to save Earth.'
+  },
+  {
+    title: 'Deadstream',
+    image: 'deadstream.jpg',
+    synopsis: 'A disgraced livestreamer spends the night in a haunted house to win back his audience. Things go terribly wrong.'
+  },
+  {
+    title: 'The Hunger Games: Sunrise on the Reaping',
+    image: 'sunrise-on-the-reaping.jpg',
+    synopsis: 'Young Haymitch Abernathy is chosen to compete in the deadly 50th Hunger Games.'
+  },
+  {
+    title: 'Real Steel',
+    image: 'real-steel.jpg',
+    synopsis: 'A former boxer and his son team up to train an underdog robot for a chance at boxing glory.'
+  },
+  {
+    title: 'The Lorax',
+    image: 'the-lorax.jpg',
+    synopsis: 'A young boy searches for a real tree and discovers the story of a creature who tried to protect the forest.'
+  }
+];
+
 function GameCollection({ games, status }) {
   return (
     <div className="games-grid">
@@ -63,6 +96,7 @@ function App() {
   const [giftOpen, setGiftOpen] = useState(false);
   const [cakeOpen, setCakeOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
+  const [moviesOpen, setMoviesOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
 const [petCount, setPetCount] = useState(0);
 const [catMessage, setCatMessage] = useState(
@@ -358,6 +392,27 @@ height="74"
     }
   }}
 />
+  
+{/* CLICKABLE BOOKSHELF */}
+<rect
+  className="bookshelf-svg-hotspot"
+  x="300"
+  y="150"
+  width="115"
+  height="230"
+  rx="3"
+  role="button"
+  tabIndex={0}
+  aria-label="Open movies to watch"
+  onClick={() => setMoviesOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setMoviesOpen(true);
+    }
+  }}
+/>
+
 {/* CLICKABLE SLEEPING CAT */}
 <rect
   className="cat-svg-hotspot"
@@ -643,6 +698,64 @@ height="74"
     </div>
   </div>
 )}
+
+{/* BOOKSHELF MOVIE WATCHLIST */}
+{moviesOpen && (
+  <div className="movies-overlay">
+    <div
+      className="movies-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Movies to watch"
+    >
+      <div className="movies-titlebar">
+        <span>▣ MOVIENIGHT.EXE</span>
+        <button
+          type="button"
+          onClick={() => setMoviesOpen(false)}
+          aria-label="Close movie watchlist"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="movies-content">
+        <div className="movies-intro">
+          <span>✦ 🎬 ✦</span>
+          <h2>MOVIES TO WATCH</h2>
+          <p>Our little movie night list ♡</p>
+        </div>
+
+        <div className="movies-grid">
+          {moviesToWatch.map((movie) => (
+            <article className="movies-card" key={movie.title}>
+              <div className="movies-poster">
+                <img
+                  src={`/${movie.image}`}
+                  alt={`${movie.title} poster`}
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+
+              <div className="movies-card-info">
+                <h3>{movie.title}</h3>
+                <p>{movie.synopsis}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="movies-footer">
+          ✦ SIX MOVIES, MANY MOVIE NIGHTS TO COME ✦
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
 {/* NAILONG CAT POPUP */}
 {catOpen && (
   <div className="cat-overlay">
