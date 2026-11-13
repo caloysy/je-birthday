@@ -2552,3 +2552,174 @@ button { font-family: inherit; }
     transition: none;
   }
 }
+
+/* =====================================
+   CALENDAR.EXE
+===================================== */
+
+.calendar-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.calendar-svg-hotspot:hover,
+.calendar-svg-hotspot:focus-visible {
+  fill: rgba(255, 244, 190, 0.12);
+  stroke: #fff1b5;
+  outline: none;
+}
+
+.calendar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8, 20, 17, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.calendar-popup {
+  width: min(100%, 480px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #f5ecd9;
+  border: 4px solid #d8c5a0;
+  border-radius: 9px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.5);
+  font-family: inherit;
+}
+
+.calendar-titlebar {
+  background: #294c40;
+  color: #fff3d8;
+  padding: 13px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.calendar-titlebar button {
+  background: transparent;
+  border: none;
+  color: #fff3d8;
+  font: inherit;
+  cursor: pointer;
+}
+
+.calendar-content {
+  padding: 26px 30px 22px;
+  text-align: center;
+  color: #294c40;
+}
+
+.calendar-decoration {
+  color: #b48a5c;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.calendar-content h2 {
+  font-size: 25px;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.calendar-year {
+  font-size: 13px;
+  letter-spacing: 5px;
+  margin: 9px 0 25px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.calendar-weekday {
+  font-size: 9px;
+  font-weight: bold;
+  padding: 9px 0;
+  border-bottom: 2px solid #d8c5a0;
+}
+
+.calendar-day {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.birthday-day {
+  color: #a64658;
+  font-weight: bold;
+}
+
+.birthday-day::before {
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border: 3px solid #c46c79;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.calendar-heart {
+  position: absolute;
+  right: -2px;
+  top: -5px;
+  color: #c46c79;
+  font-size: 15px;
+}
+
+.calendar-birthday-note {
+  margin-top: 25px;
+  padding: 19px 10px;
+  background: #fff9ec;
+  border: 2px dashed #d5b99b;
+  border-radius: 5px;
+}
+
+.calendar-birthday-note > span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #b46a76;
+}
+
+.calendar-birthday-note h3 {
+  font-size: 18px;
+  color: #a64658;
+  margin: 12px 0;
+}
+
+.calendar-birthday-note p {
+  font-size: 10px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.calendar-footer {
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 22px;
+  color: #8b806b;
+}
+
+@media (max-width: 480px) {
+  .calendar-content {
+    padding: 20px 15px;
+  }
+  .calendar-grid {
+    gap: 2px;
+  }
+}
