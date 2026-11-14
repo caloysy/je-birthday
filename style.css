@@ -3065,13 +3065,14 @@ button { font-family: inherit; }
   aspect-ratio: 4 / 3;
 }
 
+
 .memory-photo img,
 .memory-viewer-photo img {
   position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -3134,10 +3135,26 @@ button { font-family: inherit; }
   z-index: 2;
 }
 
+
 .memory-viewer-photo {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
   margin-top: 25px;
+  background: #e5ddca;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
 }
+
+.memory-viewer-photo img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 55vh;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
 
 .memory-viewer h3 {
   font-size: 14px;
