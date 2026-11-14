@@ -197,8 +197,8 @@ const unlockRoomAchievement = (id) => {
   const achievement = allUnlocked
     ? {
         icon: '👑',
-        title: 'The World Is Better With You In It',
-        description: 'You found every little piece of this gift. ♡',
+        title: 'AND THATS EVERYTHING',
+        description: 'You found every little piece of this gift',
         final: true
       }
     : {
@@ -230,16 +230,16 @@ const [catMessage, setCatMessage] = useState(
 const [catHeart, setCatHeart] = useState(0);
 
 const catDialogues = [
-  "Ay, ginising mo ako. May pagkain ka ba?",
-  "Isa pa. Hindi pa sapat.",
-  "Meow. Libre lang naman mang-pet, diba?",
-  "Okay, favorite human na kita. Slightly.",
-  "Grabe ka naman. Wala ka bang ibang gagawin?",
-  "Sige lang. Ako naman ang boss dito.",
-  "Pet mo lang ako. Wala kang choice.",
-  "Uy, baka ma-fall ako sa'yo niyan.",
-  "Konti na lang... may sikreto ako.",
-  "MEOW! Tatay na kita ngayon. 🐱"
+  "Ay, ang istorbo naman sa tulog ko",
+  "Wow umisa pa",
+  "Meow.",
+  "Okay, sige isa pa",
+  "Panay hipo ka naman",
+  "Ikaw ga'y aligi?",
+  "Sige go pa",
+  "Uy, kilala mo ba ako?",
+  "Ako yung yellow dinosaur",
+  "MEOW! NAILONG IN THE HOUSE"
 ];
 
 const petNailong = () => {
