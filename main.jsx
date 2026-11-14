@@ -26,13 +26,44 @@ const wishlistGames = [
   { name: 'Content Warning', image: 'content-warning.png' }
 ];
 
+
 const gameMemories = [
-  { id: 1, image: 'memory-1.png', title: 'MEMORY 01', caption: 'A little moment worth keeping.' },
-  { id: 2, image: 'memory-2.png', title: 'MEMORY 02', caption: 'Another adventure together.' },
-  { id: 3, image: 'memory-3.png', title: 'MEMORY 03', caption: 'One for the scrapbook.' },
-  { id: 4, image: 'memory-4.png', title: 'MEMORY 04', caption: 'The moments in between.' },
-  { id: 5, image: 'memory-5.png', title: 'MEMORY 05', caption: 'A favorite little memory.' },
-  { id: 6, image: 'memory-6.png', title: 'MEMORY 06', caption: 'More memories to come. ♡' }
+  {
+    id: 1,
+    image: 'memory-1.png',
+    title: 'THE TWO OF US',
+    caption: 'Some of my favorite moments happen when we play together.'
+  },
+  {
+    id: 2,
+    image: 'memory-2.png',
+    title: 'OUR LITTLE ADVENTURES',
+    caption: 'Different worlds, same favorite person to play with.'
+  },
+  {
+    id: 3,
+    image: 'memory-3.png',
+    title: 'SIDE BY SIDE',
+    caption: 'Even when we are miles apart, we still find ways to spend time together.'
+  },
+  {
+    id: 4,
+    image: 'memory-4.png',
+    title: 'SILLY LITTLE MOMENTS',
+    caption: 'I love that we can have fun doing the most random things.'
+  },
+  {
+    id: 5,
+    image: 'memory-5.png',
+    title: 'ANOTHER WORLD TOGETHER',
+    caption: 'Every new adventure becomes another memory with you.'
+  },
+  {
+    id: 6,
+    image: 'memory-6.png',
+    title: 'TO BE CONTINUED...',
+    caption: 'Here is to all the games we have yet to play and memories we have yet to make. ♡'
+  }
 ];
 
 const moviesToWatch = [
