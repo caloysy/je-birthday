@@ -493,10 +493,17 @@ d="
   }}
 />
 
+
 {/* CLICKABLE HANGING PHOTOS */}
-<polygon
+<path
   className="memories-svg-hotspot"
-  points="428,163 595,163 595,207 428,207"
+  d="
+    M 425 160
+    Q 508 184 598 160
+    L 598 200
+    Q 510 218 425 200
+    Z
+  "
   role="button"
   tabIndex={0}
   aria-label="Open our gaming memories"
@@ -508,6 +515,7 @@ d="
     }
   }}
 />
+
  
 {/* CLICKABLE BOOKSHELF */}
 <polygon
