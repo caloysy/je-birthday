@@ -31,38 +31,38 @@ const gameMemories = [
   {
     id: 1,
     image: 'memory-1.png',
-    title: 'THE TWO OF US',
-    caption: 'Some of my favorite moments happen when we play together.'
+    title: 'DITO ANG TINGEN',
+    caption: 'Mga panahong hindi ka pa si JISAS'
   },
   {
     id: 2,
     image: 'memory-2.png',
-    title: 'OUR LITTLE ADVENTURES',
-    caption: 'Different worlds, same favorite person to play with.'
+    title: 'PEAKPEAK',
+    caption: 'Best take na natin yan'
   },
   {
     id: 3,
     image: 'memory-3.png',
-    title: 'SIDE BY SIDE',
-    caption: 'Even when we are miles apart, we still find ways to spend time together.'
+    title: 'Adventure Time Cave',
+    caption: 'Mag tatay sila btw (Ice King & Marceline'
   },
   {
     id: 4,
     image: 'memory-4.png',
-    title: 'SILLY LITTLE MOMENTS',
-    caption: 'I love that we can have fun doing the most random things.'
+    title: 'ITUTOK MO',
+    caption: 'Ang pilyo ng side eye mo rito HAHAHAHA'
   },
   {
     id: 5,
     image: 'memory-5.png',
-    title: 'ANOTHER WORLD TOGETHER',
-    caption: 'Every new adventure becomes another memory with you.'
+    title: 'CANDID',
+    caption: 'Bat ka ba naka-skeleton head ha?'
   },
   {
     id: 6,
     image: 'memory-6.png',
-    title: 'TO BE CONTINUED...',
-    caption: 'Here is to all the games we have yet to play and memories we have yet to make. ♡'
+    title: 'BAOG',
+    caption: 'Fave pic ko sayo'
   }
 ];
 
@@ -799,8 +799,8 @@ d="
       <div className="memories-content">
         <div className="memories-intro">
           <span>✦ ♡ ✦</span>
-          <h2>OUR GAME MEMORIES</h2>
-          <p>Little moments from our adventures together.</p>
+          <h2>GALLERY</h2>
+          <p>Favorite screenshots ko</p>
         </div>
 
         <div className="memories-grid">
@@ -831,7 +831,7 @@ d="
         </div>
 
         <div className="memories-footer">
-          ✦ SIX LITTLE MOMENTS, SO MANY MORE TO COME ✦
+          ✦ SANA IPAG-FILM MO NA AKO BEBE HAHAHA ✦
         </div>
       </div>
     </div>
