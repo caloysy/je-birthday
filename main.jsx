@@ -26,6 +26,15 @@ const wishlistGames = [
   { name: 'Content Warning', image: 'content-warning.png' }
 ];
 
+const gameMemories = [
+  { id: 1, image: 'memory-1.png', title: 'MEMORY 01', caption: 'A little moment worth keeping.' },
+  { id: 2, image: 'memory-2.png', title: 'MEMORY 02', caption: 'Another adventure together.' },
+  { id: 3, image: 'memory-3.png', title: 'MEMORY 03', caption: 'One for the scrapbook.' },
+  { id: 4, image: 'memory-4.png', title: 'MEMORY 04', caption: 'The moments in between.' },
+  { id: 5, image: 'memory-5.png', title: 'MEMORY 05', caption: 'A favorite little memory.' },
+  { id: 6, image: 'memory-6.png', title: 'MEMORY 06', caption: 'More memories to come. ♡' }
+];
+
 const moviesToWatch = [
   {
     title: 'Clayface',
@@ -98,6 +107,8 @@ function App() {
   const [gamesOpen, setGamesOpen] = useState(false);
   const [moviesOpen, setMoviesOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [memoriesOpen, setMemoriesOpen] = useState(false);
+const [selectedMemory, setSelectedMemory] = useState(null);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [lightMode, setLightMode] = useState('warm');
 
@@ -481,6 +492,22 @@ d="
     }
   }}
 />
+
+{/* CLICKABLE HANGING PHOTOS */}
+<polygon
+  className="memories-svg-hotspot"
+  points="428,163 595,163 595,207 428,207"
+  role="button"
+  tabIndex={0}
+  aria-label="Open our gaming memories"
+  onClick={() => setMemoriesOpen(true)}
+  onKeyDown={(event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setMemoriesOpen(true);
+    }
+  }}
+/>
  
 {/* CLICKABLE BOOKSHELF */}
 <polygon
@@ -699,6 +726,144 @@ d="
   </div>
 )}
 
+
+{/* GAMING MEMORIES SCRAPBOOK */}
+{memoriesOpen && (
+  <div
+    className="memories-overlay"
+    onClick={() => {
+      setMemoriesOpen(false);
+      setSelectedMemory(null);
+    }}
+  >
+    <div
+      className="memories-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Our gaming memories"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <div className="memories-titlebar">
+        <span>▣ MEMORIES.EXE</span>
+        <button
+          type="button"
+          onClick={() => {
+            setMemoriesOpen(false);
+            setSelectedMemory(null);
+          }}
+          aria-label="Close memories"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="memories-content">
+        <div className="memories-intro">
+          <span>✦ ♡ ✦</span>
+          <h2>OUR GAME MEMORIES</h2>
+          <p>Little moments from our adventures together.</p>
+        </div>
+
+        <div className="memories-grid">
+          {gameMemories.map((memory, index) => (
+            <button
+              type="button"
+              className="memory-polaroid"
+              key={memory.id}
+              onClick={() => setSelectedMemory(index)}
+            >
+              <div className="memory-photo">
+                <img
+                  src={`/${memory.image}`}
+                  alt={memory.title}
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.style.display = 'none';
+                  }}
+                />
+                <span className="memory-placeholder">
+                  ♡
+                  <small>PHOTO {String(memory.id).padStart(2, '0')}</small>
+                </span>
+              </div>
+              <span className="memory-caption">{memory.title}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="memories-footer">
+          ✦ SIX LITTLE MOMENTS, SO MANY MORE TO COME ✦
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+{/* ENLARGED MEMORY VIEWER */}
+{selectedMemory !== null && (
+  <div
+    className="memory-viewer-overlay"
+    onClick={() => setSelectedMemory(null)}
+  >
+    <div
+      className="memory-viewer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Selected gaming memory"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <button
+        className="memory-viewer-close"
+        onClick={() => setSelectedMemory(null)}
+        aria-label="Close photo"
+      >
+        ✕
+      </button>
+
+      <div className="memory-viewer-photo">
+        <img
+          key={selectedMemory}
+          src={`/${gameMemories[selectedMemory].image}`}
+          alt={gameMemories[selectedMemory].title}
+          onError={(event) => {
+            event.currentTarget.style.display = 'none';
+          }}
+        />
+        <span className="memory-placeholder">
+          ♡
+          <small>PHOTO {String(selectedMemory + 1).padStart(2, '0')}</small>
+        </span>
+      </div>
+
+      <h3>{gameMemories[selectedMemory].title}</h3>
+      <p>{gameMemories[selectedMemory].caption}</p>
+
+      <div className="memory-viewer-navigation">
+        <button
+          onClick={() =>
+            setSelectedMemory((previous) =>
+              (previous - 1 + gameMemories.length) % gameMemories.length
+            )
+          }
+        >
+          ← PREV
+        </button>
+
+        <span>{selectedMemory + 1} / {gameMemories.length}</span>
+
+        <button
+          onClick={() =>
+            setSelectedMemory((previous) =>
+              (previous + 1) % gameMemories.length
+            )
+          }
+        >
+          NEXT →
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
 {/* GIFT LETTER */}
 {giftOpen && (
