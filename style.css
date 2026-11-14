@@ -3185,3 +3185,7 @@ button { font-family: inherit; }
     padding: 15px;
   }
 }
+.memory-photo:has(img:not([style*="display: none"])) .memory-placeholder,
+.memory-viewer-photo:has(img:not([style*="display: none"])) .memory-placeholder {
+  display: none;
+}
