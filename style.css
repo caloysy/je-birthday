@@ -2925,3 +2925,263 @@ button { font-family: inherit; }
     font-size: 23px;
   }
 }
+
+/* =====================================
+   MEMORIES.EXE — GAMING SCRAPBOOK
+===================================== */
+
+.memories-svg-hotspot {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.memories-svg-hotspot:hover,
+.memories-svg-hotspot:focus-visible {
+  fill: rgba(255, 244, 190, 0.12);
+  stroke: #fff1b5;
+  outline: none;
+}
+
+.memories-overlay,
+.memory-viewer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 20, 17, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.memories-overlay {
+  z-index: 9999;
+}
+
+.memory-viewer-overlay {
+  z-index: 10000;
+}
+
+.memories-popup {
+  width: min(100%, 720px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #f5ecd9;
+  border: 4px solid #d8c5a0;
+  border-radius: 9px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.5);
+  font-family: inherit;
+}
+
+.memories-titlebar {
+  background: #294c40;
+  color: #fff3d8;
+  padding: 13px 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.memories-titlebar button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.memories-content {
+  padding: 26px;
+  color: #294c40;
+}
+
+.memories-intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.memories-intro > span {
+  color: #b48a5c;
+  font-size: 16px;
+}
+
+.memories-intro h2 {
+  font-size: 20px;
+  margin: 13px 0;
+}
+
+.memories-intro p {
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding: 10px;
+}
+
+.memory-polaroid {
+  min-width: 0;
+  background: #fffdf5;
+  border: 1px solid #e0d5bc;
+  padding: 9px 9px 17px;
+  box-shadow: 3px 5px 0 rgba(41,76,64,0.15);
+  cursor: pointer;
+  font: inherit;
+  color: #294c40;
+  transition: transform 0.2s ease;
+}
+
+.memory-polaroid:nth-child(3n+1) {
+  transform: rotate(-3deg);
+}
+
+.memory-polaroid:nth-child(3n+2) {
+  transform: rotate(2deg);
+}
+
+.memory-polaroid:nth-child(3n) {
+  transform: rotate(-1deg);
+}
+
+.memory-polaroid:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+.memory-photo,
+.memory-viewer-photo {
+  position: relative;
+  background: #e5ddca;
+  overflow: hidden;
+}
+
+.memory-photo {
+  aspect-ratio: 4 / 3;
+}
+
+.memory-photo img,
+.memory-viewer-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.memory-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #a99c84;
+  font-size: 28px;
+}
+
+.memory-placeholder small {
+  font-size: 9px;
+}
+
+.memory-caption {
+  display: block;
+  margin-top: 15px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.memories-footer {
+  text-align: center;
+  font-size: 9px;
+  margin-top: 30px;
+  color: #a07c55;
+  letter-spacing: 1px;
+}
+
+/* ENLARGED PHOTO VIEWER */
+
+.memory-viewer {
+  position: relative;
+  width: min(100%, 620px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fffdf5;
+  border: 4px solid #d8c5a0;
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+  color: #294c40;
+  font-family: inherit;
+}
+
+.memory-viewer-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  color: #294c40;
+  font: inherit;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.memory-viewer-photo {
+  aspect-ratio: 16 / 9;
+  margin-top: 25px;
+}
+
+.memory-viewer h3 {
+  font-size: 14px;
+  margin: 22px 0 10px;
+}
+
+.memory-viewer p {
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.memory-viewer-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.memory-viewer-navigation button {
+  background: #294c40;
+  color: #fff3d8;
+  border: none;
+  padding: 12px;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.memory-viewer-navigation span {
+  font-size: 10px;
+}
+
+@media (max-width: 600px) {
+  .memories-content {
+    padding: 20px 14px;
+  }
+
+  .memories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .memory-viewer {
+    padding: 15px;
+  }
+}
