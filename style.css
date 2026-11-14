@@ -3232,3 +3232,97 @@ button { font-family: inherit; }
   margin-left: auto;
   margin-right: auto;
 }
+
+/* MINECRAFT-STYLE ACHIEVEMENTS */
+
+.room-achievement-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 20000;
+  width: min(370px, calc(100vw - 32px));
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px;
+  background: #202820;
+  border: 3px solid #879584;
+  box-shadow:
+    inset 0 0 0 2px #394839,
+    5px 6px 0 rgba(0, 0, 0, 0.4);
+  color: #fff7e5;
+  font-family: inherit;
+  pointer-events: none;
+  animation: achievement-slide-in 0.45s ease-out both;
+}
+
+.room-achievement-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #394839;
+  border: 2px solid #879584;
+  font-size: 27px;
+}
+
+.room-achievement-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.room-achievement-text span {
+  color: #e5ca79;
+  font-size: 10px;
+}
+
+.room-achievement-text strong {
+  color: #fff7e5;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.room-achievement-text small {
+  color: #b8c9b8;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.room-achievement-final {
+  border-color: #e5ca79;
+  background: #302c20;
+}
+
+.room-achievement-final .room-achievement-icon {
+  border-color: #e5ca79;
+  background: #54452a;
+}
+
+@keyframes achievement-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(110%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .room-achievement-toast {
+    top: 12px;
+    right: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .room-achievement-toast {
+    animation: none;
+  }
+}
