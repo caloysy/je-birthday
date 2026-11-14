@@ -379,7 +379,10 @@ const toggleMusic = async () => {
   <div className="mini-music-controls">
     <button
       type="button"
-      onClick={toggleMusic}
+     onClick={() => {
+  toggleMusic();
+  unlockRoomAchievement('vinyl');
+}}
       aria-label={musicPlaying ? 'Pause music' : 'Play music'}
     >
       {musicPlaying ? 'Ⅱ' : '▶'}
@@ -429,10 +432,12 @@ const toggleMusic = async () => {
     role="button"
     tabIndex={0}
     aria-label="Look outside the window"
-    onClick={() => {
-  setWindowOpen(true);
+   
+onClick={() => {
+  setScreen('window');
   unlockRoomAchievement('window');
 }}
+
     onKeyDown={(event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -471,7 +476,10 @@ height="55"
   role="button"
   tabIndex={0}
   aria-label="Open birthday present"
- onClick={() => setGiftOpen(true)}
+onClick={() => {
+  setGiftOpen(true);
+  unlockRoomAchievement('gift');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
