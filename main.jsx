@@ -44,7 +44,7 @@ const gameMemories = [
     id: 3,
     image: 'memory-3.png',
     title: 'Adventure Time Cave',
-    caption: 'Mag tatay sila btw (Ice King & Marceline'
+    caption: 'Mag tatay sila btw (Ice King & Marceline)'
   },
   {
     id: 4,
@@ -127,6 +127,20 @@ function GameCollection({ games, status }) {
   );
 }
 
+const roomAchievements = {
+  star: { icon: '⭐', title: 'Let There Be Light!' },
+  calendar: { icon: '📅', title: "It's Your Day!" },
+  cat: { icon: '🐱', title: 'Certified Cat Person' },
+  chair: { icon: '🎮', title: 'Main Character Unlocked' },
+  photos: { icon: '📸', title: 'A Trip Down Memory Lane' },
+  bookshelf: { icon: '🎬', title: 'Movie Night?' },
+  computer: { icon: '💻', title: 'Player Two Has Joined' },
+  vinyl: { icon: '💿', title: "Now That's My Jam!" },
+  cake: { icon: '🎂', title: 'Make a Wish!' },
+  gift: { icon: '🎁', title: 'Special Delivery!' },
+  window: { icon: '🌧️', title: 'A Window to Another World' }
+};
+
 function App() {
   const [screen, setScreen] = useState('start');
   const [progress, setProgress] = useState(0);
@@ -142,6 +156,66 @@ function App() {
 const [selectedMemory, setSelectedMemory] = useState(null);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [lightMode, setLightMode] = useState('warm');
+  
+const [unlockedRoomAchievements, setUnlockedRoomAchievements] =
+  useState(() => {
+    try {
+      return JSON.parse(
+        localStorage.getItem('birthday-room-achievements') || '[]'
+      );
+    } catch {
+      return [];
+    }
+  });
+
+const [achievementToast, setAchievementToast] = useState(null);
+
+const achievementTimer = useRef(null);
+
+const unlockRoomAchievement = (id) => {
+  if (!roomAchievements[id]) return;
+
+  const saved = JSON.parse(
+    localStorage.getItem('birthday-room-achievements') || '[]'
+  );
+
+  if (saved.includes(id)) return;
+
+  const updated = [...saved, id];
+
+  localStorage.setItem(
+    'birthday-room-achievements',
+    JSON.stringify(updated)
+  );
+
+  setUnlockedRoomAchievements(updated);
+
+  const allUnlocked = Object.keys(roomAchievements).every(
+    (key) => updated.includes(key)
+  );
+
+  const achievement = allUnlocked
+    ? {
+        icon: '👑',
+        title: 'The World Is Better With You In It',
+        description: 'You found every little piece of this gift. ♡',
+        final: true
+      }
+    : {
+        ...roomAchievements[id],
+        description: 'You discovered something special!',
+        final: false
+      };
+
+  setAchievementToast(achievement);
+
+  clearTimeout(achievementTimer.current);
+
+  achievementTimer.current = setTimeout(() => {
+    setAchievementToast(null);
+  }, 4500);
+};
+
 
 const toggleLight = () => {
   setLightMode((previous) =>
@@ -355,7 +429,10 @@ const toggleMusic = async () => {
     role="button"
     tabIndex={0}
     aria-label="Look outside the window"
-    onClick={() => setScreen('window')}
+    onClick={() => {
+  setWindowOpen(true);
+  unlockRoomAchievement('window');
+}}
     onKeyDown={(event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
@@ -415,7 +492,10 @@ height="74"
   role="button"
   tabIndex={0}
   aria-label="Blow out birthday candles"
-  onClick={() => setCakeOpen(true)}
+  onClick={() => {
+  setCakeOpen(true);
+  unlockRoomAchievement('cake');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -459,7 +539,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label="Open Je's character profile"
-  onClick={() => setProfileOpen(true)}
+onClick={() => {
+  setProfileOpen(true);
+  unlockRoomAchievement('chair');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -479,7 +562,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label="Open our game collection"
-  onClick={() => setGamesOpen(true)}
+ onClick={() => {
+  setGamesOpen(true);
+  unlockRoomAchievement('computer');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -495,7 +581,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label={`Switch to ${lightMode === 'warm' ? 'cool' : 'warm'} lighting`}
-  onClick={toggleLight}
+ onClick={() => {
+  toggleLight();
+  unlockRoomAchievement('star');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -515,7 +604,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label="Open November birthday calendar"
-  onClick={() => setCalendarOpen(true)}
+onClick={() => {
+  setCalendarOpen(true);
+  unlockRoomAchievement('calendar');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -538,7 +630,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label="Open our gaming memories"
-  onClick={() => setMemoriesOpen(true)}
+ onClick={() => {
+  setMemoriesOpen(true);
+  unlockRoomAchievement('photos');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -555,7 +650,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label="Open movies to watch"
-  onClick={() => setMoviesOpen(true)}
+ onClick={() => {
+  setMoviesOpen(true);
+  unlockRoomAchievement('bookshelf');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -563,8 +661,6 @@ d="
     }
   }}
 />
-
-{/* CLICKABLE SLEEPING CAT */}
 
 {/* CLICKABLE SLEEPING CAT */}
 <path
@@ -588,7 +684,10 @@ d="
   role="button"
   tabIndex={0}
   aria-label="Pet the sleeping cat"
-  onClick={() => setCatOpen(true)}
+ onClick={() => {
+  setCatOpen(true);
+  unlockRoomAchievement('cat');
+}}
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -602,8 +701,7 @@ d="
             </div>
 
             <p>
-              A little room made just for you.
-              Explore anything you like. ♡
+              Explore anything you like
             </p>
 
           </div>
@@ -1356,6 +1454,32 @@ d="
   </section>
 )}
 
+
+{/* MINECRAFT-STYLE ACHIEVEMENT NOTIFICATION */}
+{achievementToast && (
+  <div
+    className={`room-achievement-toast ${
+      achievementToast.final ? 'room-achievement-final' : ''
+    }`}
+    role="status"
+    aria-live="polite"
+  >
+    <div className="room-achievement-icon">
+      {achievementToast.icon}
+    </div>
+
+    <div className="room-achievement-text">
+      <span>
+        {achievementToast.final
+          ? 'Challenge Complete!'
+          : 'Advancement Made!'}
+      </span>
+
+      <strong>{achievementToast.title}</strong>
+      <small>{achievementToast.description}</small>
+    </div>
+  </div>
+)}
 
     </main>
   );
