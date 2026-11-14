@@ -638,11 +638,11 @@ d="
           <div className="profile-avatar">🎮</div>
 
           <div className="profile-identity">
-            <span className="profile-tag">✦ CHARACTER UNLOCKED ✦</span>
+            <span className="profile-tag">CHARACTER UNLOCKED</span>
             <h2>JE</h2>
-            <p>CLASS: MAIN CHARACTER</p>
+            <p>CLASS: MAIN CHARACTER (bida bida yarn?) </p>
             <p>BIRTHDAY: NOVEMBER 16</p>
-            <span className="profile-rarity">★ LEGENDARY ★</span>
+            <span className="profile-rarity">SIPUNIN</span>
           </div>
         </div>
 
@@ -652,11 +652,11 @@ d="
 
         <div className="profile-stats">
           {[
-            { name: 'Kindness', value: 95 },
-            { name: 'Humor', value: 90 },
-            { name: 'Patience with Jiks', value: 100 },
-            { name: 'Gaming Skills', value: 85 },
-            { name: 'Main Character Energy', value: 100 }
+            { name: 'Mabait', value: 83 },
+            { name: 'Bitaw', value: 85 },
+            { name: 'Gaming Skills', value: 100 },
+            { name: 'Ragebaiting', value: 98 },
+            { name: 'Pasensya Sakin', value: 100 }
           ].map((stat) => (
             <div className="profile-stat" key={stat.name}>
               <div className="profile-stat-label">
@@ -678,21 +678,21 @@ d="
         </div>
 
         <div className="profile-ability">
-          ♡ Making ordinary days feel like adventures.
+          Feel niya kaya niya magsurvive sa zombie apocalypse
         </div>
 
         <div className="profile-message">
-          <span>✦ NEW CHAPTER UNLOCKED ✦</span>
+          <span>NEW CHAPTER UNLOCKED</span>
           <h3>ANOTHER YEAR OF JE!</h3>
           <p>
-            May this next chapter bring you everything
-            you've been working and hoping for.
-            I'll always be cheering you on. ♡
+            Mabuhay ka nang matagal
+            I'm so proud of you
+            I'll always be cheering you on
           </p>
         </div>
 
         <div className="profile-footer">
-          ♡ ONE OF A KIND ♡
+          I MISS YOU (habang ginagawa toh)
         </div>
       </div>
     </div>
