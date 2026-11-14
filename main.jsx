@@ -492,7 +492,7 @@ height="74"
   role="button"
   tabIndex={0}
   aria-label="Blow out birthday candles"
-  onClick={() => {
+ onClick={() => {
   setCakeOpen(true);
   unlockRoomAchievement('cake');
 }}
