@@ -457,7 +457,12 @@ height="43"
   role="button"
   tabIndex={0}
   aria-label={musicPlaying ? 'Pause music' : 'Play music'}
-  onClick={toggleMusic}
+ 
+onClick={() => {
+  toggleMusic();
+  unlockRoomAchievement('vinyl');
+}}
+
   onKeyDown={(event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
